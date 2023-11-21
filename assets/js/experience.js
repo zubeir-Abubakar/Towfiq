@@ -19,7 +19,7 @@ const exp = [
     desp:"<li>Worked on the project Mpesa Application. 1.0 </li><li>Designed a software application that would help Clients fatenup andmake their transaction work easy for them that includes having mini apps within the app as well as having the transation logs.</li>",
   },
   {
-    title: "Quality Assuarance Engineer Specialist ",
+    title: "Lead Quality Assuarance Engineer | Automation Engineer ",
     cardImage: "./assets/images/experience-page/Cashia.png",
     place: "CASHIA",
     time: "(January 2021 - Till Date)",

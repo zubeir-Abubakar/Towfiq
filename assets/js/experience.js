@@ -5,21 +5,28 @@ AOS.init();
 const experiencecards = document.querySelector(".experience-cards");
 const exp = [
  {
-    title: "software Development Intern",
+    title: "Backend software Development Intern",
     cardImage: "./assets/images/experience-page/innovex.jpeg",
     place: "INNOVEX SOLUTIONS",
     time: "(september 2019 - Jan, 2020)",
-    desp:"<li>Worked on the project Mjenzi Application. 2.0 standards Implementation for Retrofit and Vitual Location Static.</li><li>Designed a software application that would help developers trust their workers on their project developments that includes, it controls the day to day routine and contains Geo django where it collects information about where the data was sent thus safety to the developers.</li>",
+    desp:"<li>Worked on the project Mjenzi Application. 2.0 standards Implementation for Retrofit and Virtual Location Static.</li><li>Designed a software application that would help developers trust their workers on their project developments that includes, it controls the day to day routine and contains Geo django where it collects information about where the data was sent thus safety to the developers.</li>",
   },
   {
-    title: "software Developer",
+    title: " UI/UX | software Developer",
     cardImage: "./assets/images/experience-page/Safaricom.png",
     place: "Safaricom",
     time: "(February 2020 - August, 2020)",
-    desp:"<li>Worked on the project Mpesa Application. 1.0 </li><li>Designed a software application that would help Clients fatenup andmake their transaction work easy for them that includes having mini apps within the app as well as having the transation logs.</li>",
+    desp:"<li>Worked on the project Mpesa Application. 1.0 </li><li>Designed a software application that would help Clients fasten up and make their transaction work easy for them that includes having mini apps within the app as well as having the transaction logs.</li>",
   },
   {
-    title: "Lead Quality Assuarance Engineer | Automation Engineer ",
+    title: "Quality Assurance Engineer | Automation Engineer ",
+    cardImage: "./assets/images/experience-page/Nobilis.jpeg",
+    place: "Nobilis",
+    time: "(March 2024 - May 2024 CONTRACT)",
+    desp:"<li>Successfully identified and reported critical issues that improved the overall stability and performance of the applications.</li><li> Contributed to a 20% reduction in the manual testing time by developing efficient automated test scripts.</li><li> Received commendation from the project manager for proactive communication and thorough testing practices.</li>",
+  },
+  {
+    title: "Lead Quality Assurance Engineer | Automation Engineer ",
     cardImage: "./assets/images/experience-page/Cashia.png",
     place: "CASHIA",
     time: "(January 2021 - Till Date)",

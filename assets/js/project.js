@@ -6,13 +6,13 @@ const projectcards = document.querySelector(".projectcards");
 // Array of object for projects
 const projects = [
   {
-    title: "Quiz App",
-    cardImage: "assets/images/project-page/quiz.jpg",
+    title: "Swirl Express ",
+    cardImage: "assets/images/project-page/swirl.png",
     description: "A quiz app built using Javascript and 15% html.",
     tags: ["Javascript", "HTML5"],
     tagimg: "https://cdn.iconscout.com/icon/free/png-512/react-1-282599.png",
-    Previewlink: "https://zubeir-abubakar.github.io/Quiz-board/",
-    Githublink: "https://github.com/zubeir-Abubakar/Quiz-board",
+    Previewlink: "https://zubeir-abubakar.github.io/Swirl-courier-/index.html",
+    Githublink: "https://github.com/zubeir-Abubakar/Swirl-courier-",
   },
   {
     title: "Mjenzi API Engine",
@@ -23,15 +23,15 @@ const projects = [
     Previewlink: "https://mpya.herokuapp.com/#projects-delete",
     Githublink: "https://github.com/zubeir-Abubakar/Mjengo",
   },
-  {
-    title: "Github Search",
-    cardImage: "assets/images/project-page/git.jpg",
-    description: "Github search built using Angular and typscript and also github Api",
-    tags: ["Typscript", "Angular"],
-    tagimg: "https://cdn.iconscout.com/icon/free/png-512/react-1-282599.png",
-    Previewlink: "https://zubeir-abubakar.github.io/git-search/home",
-    Githublink: "https://github.com/zubeir-Abubakar/Github-Search",
-  },
+  // {
+  //   title: "Github Search",
+  //   cardImage: "assets/images/project-page/git.jpg",
+  //   description: "Github search built using Angular and typscript and also github Api",
+  //   tags: ["Typscript", "Angular"],
+  //   tagimg: "https://cdn.iconscout.com/icon/free/png-512/react-1-282599.png",
+  //   Previewlink: "https://zubeir-abubakar.github.io/git-search/home",
+  //   Githublink: "https://github.com/zubeir-Abubakar/Github-Search",
+  // },
   {
     title: " Fitness GYM",
     cardImage: "assets/images/project-page/gym.png",
@@ -51,13 +51,20 @@ const projects = [
     Githublink: "https://github.com/zubeir-Abubakar/Hotel",
   },
   {
+    title: "Zataik Restaurant",
+    cardImage: "assets/images/project-page/food.png",
+    description: "Tasty Hotel Menu using JavaScript.",
+    Previewlink: "https://zubeir-abubakar.github.io/zataik-hotel/",
+    Githublink: "https://github.com/zubeir-Abubakar/zataik-hotel",
+  },
+  {
     title: "Sliding Form",
     cardImage: "assets/images/project-page/slide.png",
     description: "Slidding Form created using Css and Javascript.",
     tags: ["CSS", "Javascript"],
     tagimg: "https://miro.medium.com/max/816/1*mn6bOs7s6Qbao15PMNRyOA.png",
-    Previewlink: "",
-    Githublink: "",
+    Previewlink: "https://zubeir-abubakar.github.io/sliding-form/",
+    Githublink: "https://github.com/zubeir-Abubakar/sliding-form",
   },
 ];
 

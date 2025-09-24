@@ -16,7 +16,7 @@ const references = [
         sl2:2,
         name2 : "Dennis Kingori",
         designation2 : "Senior Product Manager, Cashia", 
-        image2: "https://avatars.githubusercontent.com/u/40017559?v=4",
+        image2: "./assets/images/references-page/kings.jpeg",
         message2 : "Abubakar is an exceptional QA engineer who consistently raises the bar for quality. He not only ensures our products meet the highest standards but also brings a product-focused mindset—anticipating user needs, spotting gaps early, and collaborating seamlessly across teams. His dedication directly translates into better experiences for our customers.",
         
         

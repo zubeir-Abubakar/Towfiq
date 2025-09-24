@@ -7,28 +7,28 @@ const referenceTable = document.querySelector(".pain");
 const references = [
   {
     sl1: 1,
-    name1 : "Samir Abdiaziz",
-        designation1 : "Product Manager, Safaricom",
-        image1 : "https://avatars.githubusercontent.com/u/46641503?v=4",
-        message1 : "Abubakar is a conscientious individual whom I mentored during JWOC'2021. His problem-solving skills and a keen interest in learning new skillsets are remarkable. His hardworking nature and team-building abilities make him different from others.",
+    name1 : "Hussein Omar",
+        designation1 : "Senior Backend developer, Cashia",
+        image1 : "./assets/images/references-page/Hussein.jpeg",
+        message1 : "Working with Abubakar has been a game-changer for our team. His sharp eye for detail, proactive approach to finding hidden issues, and ability to bridge QA with development ensured our releases were smooth and reliable. He doesn’t just test software—he elevates it..",
         
 
         sl2:2,
-        name2 : "Anush Bhatia",
-        designation2 : "Senior Analyst, Capgemini", 
+        name2 : "Dennis Kingori",
+        designation2 : "Senior Product Manager, Cashia", 
         image2: "https://avatars.githubusercontent.com/u/40017559?v=4",
-        message2 : "Abubakar has the best grasping skills I have seen in a new developer. I got to know him through GSSOC'2021 when I mentored him, and he made an exceptional growth during the competition. He made some incredible contributions and has good experience with Open Source.",
+        message2 : "Abubakar is an exceptional QA engineer who consistently raises the bar for quality. He not only ensures our products meet the highest standards but also brings a product-focused mindset—anticipating user needs, spotting gaps early, and collaborating seamlessly across teams. His dedication directly translates into better experiences for our customers.",
         
         
     },
 
     {
-        sl1:3,
-        name1 : "Aditya Jyoti Paul",
-        designation1 : "Technical Analyst, Amazon",
-        image1 : "https://avatars.githubusercontent.com/u/59832779?v=4",
-        message1 : "Mr.Towfiq and I have worked on several projects. Apart from technical skills, he also has good soft skills. He has good experience with debugging and has excellent leadership qualities.",
-      },
+        sl3:3,
+        name1 : "Collins Mucheru",
+        designation1 : "Elixir developer and Compliace Officer, Cashia",
+        image1 : "./assets/images/references-page/colo.jpeg",
+        message1 : "Abubakar has been instrumental to the success of our Compliance application. His thorough test planning, attention to detail, and ability to identify critical issues early have saved us countless hours downstream. Beyond his technical QA expertise, he brings a proactive attitude and excellent collaboration skills that make him a true asset to the team.",
+      }
 ];
 
 AOS.init();
@@ -42,7 +42,6 @@ const fillData = () => {
       name1,
       designation1,
       message1,
-      absbox_for_linkedin1,
       sl2,
       image2,
       name2,

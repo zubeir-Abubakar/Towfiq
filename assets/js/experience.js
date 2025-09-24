@@ -29,7 +29,7 @@ const exp = [
     title: "Lead Quality Assurance Engineer | Automation Engineer ",
     cardImage: "./assets/images/experience-page/Cashia.png",
     place: "CASHIA",
-    time: "(January 2021 - Till Date)",
+    time: "(January 2021 - Present)",
     desp:"<li>Worked on the project Cashia App for transaction upgrade2.0 standards. Worked as Quality and Assuarance as well as Frontend Developer.</li><li>Designed a software application that would help Customers do transaction easily using Cashia Tag, as well as creating an e-commerce market for merchants. Contains High level security and trust between merchants and customers for the safety transaction of their currencies.</li>",
   },
 ];
@@ -154,9 +154,21 @@ const volunteershipcards = [
   },
   {
     title: "React Js ",
-    cardImage: "https://res.cloudinary.com/practicaldev/image/fetch/s--Y6YIEgoh--/c_imagga_scale,f_auto,fl_progressive,h_900,q_auto,w_1600/https://dev-to-uploads.s3.amazonaws.com/i/n7ccgsmop6f4l4ycu4uv.png",
+    cardImage: "https://web.rijoan.com/wp-content/uploads/2023/08/react.png",
     description:
       "Used as a frontend framework.",
+  },
+  {
+    title: "Jira Xray ",
+    cardImage: "https://automation.eurostarsoftwaretesting.com/wp-content/uploads/2024/03/Xray-V-green.png",
+    description:
+      "Used as test cases tool management.",
+  },
+  {
+    title: "J-unit ",
+    cardImage: "https://cdn.prod.website-files.com/5f10ed4c0ebf7221fb5661a5/5f23a7a9b70a249eed481481_Junit.png",
+    description:
+      "open-source testing framework for the Java programming language.",
   },
    {
     title: "Cypress",
@@ -166,7 +178,7 @@ const volunteershipcards = [
   },
    {
     title: "React Native",
-    cardImage: "https://youteam.io/blog/wp-content/uploads/2021/11/react-native-logo.png",
+    cardImage: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQKYzcQt4YGIW8Uz-lh4nYggnIH8cNij_6T_w&s",
     description:
       "Used for creating mobile frameworks and frontend.",
   },

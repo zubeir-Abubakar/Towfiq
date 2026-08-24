@@ -28,7 +28,7 @@ const references = [
         designation1 : "Elixir developer and Compliace Officer, Cashia",
         image1 : "/Colo.jpeg",
         message1 : "Abubakar has been instrumental to the success of our Compliance application. His thorough test planning, attention to detail, and ability to identify critical issues early have saved us countless hours downstream. Beyond his technical QA expertise, he brings a proactive attitude and excellent collaboration skills that make him a true asset to the team.",
-      }
+      },
 ];
 
 AOS.init();

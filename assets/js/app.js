@@ -111,15 +111,7 @@ let header = $(`
 // Footer
 
 let footer = $(`
-<footer class="footer sticky-bottom"  style="background-color:#2b2a2a;">
-  <div class="p-4">
-    <div class="container-fluid quote-container">
-      <div class="quotes"    style="text-align:center;">
-      <!--SVG code for quote-left icon-->
-      <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" focusable="false" width="1.5em" height="1.5em" style="-ms-transform: rotate(360deg); -webkit-transform: rotate(360deg); transform: rotate(360deg);" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><path d="M7 21a4 4 0 0 1-4-4c0-1.473 1.333-6.14 4-14h2L7 13a4 4 0 1 1 0 8zm10 0a4 4 0 0 1-4-4c0-1.473 1.333-6.14 4-14h2l-2 10a4 4 0 1 1 0 8z" fill="#fff" fill-rule="evenodd"/></svg>
-      </div>
-      <p class="tag" >Develop a passion for learning. If you do, you will never cease to grow.</p>
-    </div>
+<footer class="footer sticky-bottom">
 
     
     <div class="container">
@@ -440,12 +432,19 @@ $(window).on("load", function () {
 
 
 $(function submitAnimation() {
+  const contactForm = document.querySelector('form[name="form1"]');
   const name = document.querySelector("#name")
   const emailAdress = document.querySelector("#email")
   const text = document.querySelector("#textArea")
   const emailPattern = /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/;
 
+  if (contactForm) {
+    contactForm.method = "POST";
+    contactForm.action = "https://formcarry.com/s/307Y52sfFJ";
+  }
+
   $("#lnch").on("click", function () {
+    if (!contactForm || this.disabled) return;
 
     // Check if the name field is empty or contains a number
     if (name.value == "" || (/\d/.test(name.value))) {
@@ -464,18 +463,41 @@ $(function submitAnimation() {
     }
     else {
 
+      this.disabled = true;
       setTimeout(function () {
-        $("#lnch").addClass("launching").text("Sending");
+        $("#lnch").addClass("launching").text("Sending...");
         $("#lnch_btn").addClass("launching");
       }, 0);
-      setTimeout(function () {
-        $("#lnch").addClass("launched").text("SENT");
-        $("#lnch_btn").addClass("launched");
-      }, 1500);
-      // Wait for 2.2 seconds so that the send button animation can be fully played before submitting the form
+      // Send the form explicitly as POST so mobile browsers cannot navigate to the endpoint with GET.
       setTimeout(() => {
-        document.querySelector('form').submit();
-      }, 2200);
+        fetch(contactForm.action, {
+          method: "POST",
+          mode: "cors",
+          redirect: "follow",
+          body: new FormData(contactForm),
+          headers: {
+            Accept: "application/json",
+          },
+        })
+          .then((response) => {
+            if (!response.ok) {
+              throw new Error(`Form submission failed: ${response.status}`);
+            }
+            return response;
+          })
+          .then(() => {
+            $("#lnch").removeClass("launching").prop("disabled", false).text("Sent");
+            $("#lnch_btn").removeClass("launching");
+            contactForm.reset();
+            swal("Message sent", "Thank you for getting in touch.", "success");
+          })
+          .catch((error) => {
+            console.error(error);
+            $("#lnch").removeClass("launching").prop("disabled", false).text("Send");
+            $("#lnch_btn").removeClass("launching");
+            swal("Message not sent", "Please try again or contact me directly.", "error");
+          });
+      }, 500);
     }
   });
 });

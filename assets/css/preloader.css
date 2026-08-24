@@ -31,6 +31,23 @@
   color: white;
 }
 
+@media (max-width: 768px) {
+  :root {
+    --atom-size: min(400px, 68vw);
+  }
+
+  .loader-container {
+    min-height: 100dvh;
+    padding: 16px;
+  }
+}
+
+@media (max-width: 360px) {
+  :root {
+    --atom-size: min(400px, 62vw);
+  }
+}
+
 /* Atom */
 .atom {
   position: relative;

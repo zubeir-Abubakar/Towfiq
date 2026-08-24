@@ -35,8 +35,7 @@ AOS.init();
 const fillData = () => {
   let output = "";
 
-  references.forEach(
-    ({
+    references.forEach(({ 
       sl1,
       image1,
       name1,
@@ -48,8 +47,8 @@ const fillData = () => {
       designation2,
       message2,
       absbox_for_linkedin2,
-    }) =>
-      (output += `<tr data-aos="zoom-in-left"> 
+        }) => {
+            output += `<tr data-aos="zoom-in-left"> 
                 <td class="imgCol"><img src="${image1}" class="rImg"></td>
                 <td class = "referenceTitleName">
                     <div>
@@ -63,9 +62,10 @@ const fillData = () => {
                         <div class="referenceY">${message1}</div>
                     </div>  
                 </td>
-            </tr> 
-            
-            <tr data-aos="zoom-in-left"> 
+                        </tr>`;
+
+            if (name2 && image2 && designation2 && message2) {
+                output += `<tr data-aos="zoom-in-left"> 
                        
                         <td class = "referenceTitleName">
                             <div>
@@ -84,8 +84,10 @@ const fillData = () => {
                            
                         </td>
                         <td class="imgCol"><img src="${image2}" class="rImg1"></td>
-                    </tr>`)
-  );
+                                        </tr>`;
+            }
+        }
+    );
   referenceTable.innerHTML = output;
 };
 document.addEventListener("DOMContentLoaded", fillData);

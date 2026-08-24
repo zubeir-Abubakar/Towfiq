@@ -333,7 +333,7 @@ const showHackathons = () => {
   if (!hackathonSection) return;
 
   let output = "";
-  certifications.forEach(({ title, role, desp, image, link }) => {
+  certifications.forEach(({ title, role, desp, image, link }, index) => {
     output += `
       <div class="blog-slider__item swiper-slide">
         <div class="blog-slider__img">
@@ -348,7 +348,7 @@ const showHackathons = () => {
           <span class="blog-slider__code">${role}</span>
           <div class="blog-slider__title">${title}</div>
           <div class="blog-slider__text">${desp}</div>
-          <a src="${Image}" target="_blank" rel="noopener noreferrer" class="blog-slider__button"><i class="fas fa-certificate mr-2"></i>View Certification</a>
+          <button type="button" class="blog-slider__button certificate-button" data-certificate-index="${index}"><i class="fas fa-certificate mr-2"></i>View Certification</button>
         </div>
       </div>
     `;
@@ -356,16 +356,65 @@ const showHackathons = () => {
 
   hackathonSection.innerHTML = output;
 
+  const certificateModal = document.createElement("div");
+  certificateModal.className = "certificate-modal";
+  certificateModal.hidden = true;
+  certificateModal.setAttribute("role", "dialog");
+  certificateModal.setAttribute("aria-modal", "true");
+  certificateModal.setAttribute("aria-labelledby", "certificate-modal-title");
+  certificateModal.innerHTML = `
+    <div class="certificate-modal__dialog">
+      <button type="button" class="certificate-modal__close" aria-label="Close certificate preview">&times;</button>
+      <img class="certificate-modal__image" alt="">
+      <div class="certificate-modal__details">
+        <h2 class="certificate-modal__title" id="certificate-modal-title"></h2>
+        <p class="certificate-modal__description"></p>
+      </div>
+    </div>
+  `;
+  document.body.appendChild(certificateModal);
+
+  const modalImage = certificateModal.querySelector(".certificate-modal__image");
+  const modalTitle = certificateModal.querySelector(".certificate-modal__title");
+  const modalDescription = certificateModal.querySelector(".certificate-modal__description");
+  const closeCertificateModal = () => {
+    certificateModal.hidden = true;
+    document.body.style.overflow = "";
+  };
+
+  hackathonSection.querySelectorAll(".certificate-button").forEach((button) => {
+    button.addEventListener("click", () => {
+      const certificate = certifications[Number(button.dataset.certificateIndex)];
+      if (!certificate) return;
+
+      modalImage.src = certificate.image;
+      modalImage.alt = certificate.title;
+      modalTitle.textContent = certificate.title;
+      modalDescription.textContent = certificate.desp;
+      certificateModal.hidden = false;
+      document.body.style.overflow = "hidden";
+      certificateModal.querySelector(".certificate-modal__close").focus();
+    });
+  });
+
+  certificateModal.querySelector(".certificate-modal__close").addEventListener("click", closeCertificateModal);
+  certificateModal.addEventListener("click", (event) => {
+    if (event.target === certificateModal) closeCertificateModal();
+  });
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape" && !certificateModal.hidden) closeCertificateModal();
+  });
+
   // Re-initialize or update swiper if available
   if (typeof Swiper !== "undefined" && document.querySelector(".blog-slider")) {
     new Swiper(".blog-slider", {
       observer: true,
       observeParents: true,
       spaceBetween: 30,
-      effect: "fade",
-      mousewheel: {
-        invert: false,
-      },
+      effect: "slide",
+      slidesPerView: 1,
+      allowTouchMove: true,
+      grabCursor: true,
       pagination: {
         el: ".blog-slider__pagination",
         clickable: true,

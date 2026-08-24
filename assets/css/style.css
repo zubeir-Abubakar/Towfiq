@@ -1160,11 +1160,13 @@ html[light-mode="dark"] .form-style-6 textarea::placeholder {
     .footer #freepik_stories-smiley-face {
       width: min(100%, 240px);
       height: 210px;
+      margin: 0 auto;
     }
     .footer .form-style-6 {
       padding: 12px;
       height: 210px;
       max-width: 320px;
+      margin-bottom: 5rem;
     }
     .footer .form-header {
       margin-bottom: 1rem;

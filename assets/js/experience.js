@@ -310,7 +310,7 @@ const certifications = [
     title: "Certified Lead QA Engineer",
     role: "Micro1 · Certified",
     desp: "Advanced certification evaluating top-tier automated testing framework architecture, CI/CD pipeline integration, API validation, and shift-left quality leadership.",
-    image: "assets/images/certifications/micro1.jpeg",
+    image: "assets/images/certifications/Micro1.jpeg",
     link: "https://www.linkedin.com/in/abubakar-towfiq",
   },
   {

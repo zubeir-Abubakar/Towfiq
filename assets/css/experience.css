@@ -721,6 +721,14 @@ html[light-mode="dark"] .blog-slider {
   transition: all 0.4s;
 }
 
+@media screen and (max-width: 991px) {
+  .blog-slider__img img,
+  .blog-slider__content > * {
+    opacity: 1;
+    transform: none;
+  }
+}
+
 /*Hackathon Name */
 
 .blog-slider__title {
@@ -741,7 +749,6 @@ html[light-mode="dark"] .blog-slider {
 }
 
 /* Hackathon Description   */
-
 .blog-slider__text {
   color: (var(--head-col));
   margin-bottom: 30px;
@@ -772,6 +779,17 @@ html[light-mode="dark"] .blog-slider {
   font-family: inherit;
   transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease;
 }
+
+@media screen and (max-width: 991px) {
+  .blog-slider__button {
+    width: 100%;
+    max-width: 280px;
+    min-height: 48px;
+    padding: 12px 16px;
+    white-space: normal;
+  }
+}
+
 .blog-slider__button:hover{
   color: white !important;
   filter: brightness(1.08);
@@ -861,7 +879,7 @@ html[light-mode="dark"] .certificate-modal__dialog {
   background: #6a00bb;
 }
 
-@media screen and (max-width: 700px) {
+@media screen and (max-width: 991px) {
   .certificate-modal {
     padding: 14px;
   }
@@ -869,7 +887,7 @@ html[light-mode="dark"] .certificate-modal__dialog {
   .certificate-modal__dialog {
     grid-template-columns: 1fr;
     gap: 12px;
-    padding: 18px;
+    padding: 58px 18px 18px;
   }
 
   .certificate-modal__image {

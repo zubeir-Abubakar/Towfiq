@@ -29,3 +29,17 @@ body * {
   height: 20px;
   background-color: rgba(211, 115, 115, 0.959);
 }
+
+@media (max-width: 991px), (pointer: coarse) {
+  html,
+  html *,
+  body,
+  body * {
+    cursor: auto !important;
+  }
+
+  .cursor-dot,
+  .cursor-dot-outline {
+    display: none;
+  }
+}

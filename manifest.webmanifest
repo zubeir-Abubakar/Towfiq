@@ -1,0 +1,19 @@
+{
+  "name": "Abubakar Towfiq | Portfolio",
+  "short_name": "Abubakar Portfolio",
+  "description": "The portfolio of Abubakar Towfiq, QA Engineer and quality advocate.",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#10151c",
+  "theme_color": "#bb86fc",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "./assets/images/qa-engineer.png",
+      "sizes": "any",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}

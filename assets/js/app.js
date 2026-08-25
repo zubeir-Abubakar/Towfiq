@@ -1,5 +1,12 @@
 
 "use strict";
+
+if ("serviceWorker" in navigator) {
+  window.addEventListener("load", () => {
+    navigator.serviceWorker.register("./sw.js").catch(() => {});
+  });
+}
+
 // Sweet Alert CDN through JS
 let script = document.createElement("script");
 script.type = 'text/javascript';

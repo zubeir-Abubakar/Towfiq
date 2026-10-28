@@ -28,13 +28,17 @@ html {
 
 @media (max-width: 766px) {
   .dropdown {
-    position: absolute;
-    padding-right: 3.5rem;
+    position: static;
+    padding-right: 0;
+    text-align: center;
+    padding: 1rem 1rem 2rem;
   }
   .godown {
     z-index: 1;
-    padding-top: 8rem;
-    padding-left: 3.3rem;
+    padding-top: 1rem;
+    padding-left: 1rem;
+    display: flex;
+    justify-content: center;
   }
 }
 .head-upper {
@@ -50,27 +54,33 @@ section > div {
 
 @media only screen and (max-width: 991px) {
   section {
-    height: 80vh;
+    height: auto;
+    min-height: 60vh;
   }
 }
 @media only screen and (max-width: 867px) {
   section {
-    height: 70vh;
+    height: auto;
+    min-height: 50vh;
   }
 }
 @media only screen and (max-width: 767px) {
   section {
-    height: 95vh;
+    height: auto;
+    min-height: 0;
+    padding-bottom: 2rem;
   }
 }
 @media only screen and (max-width: 550px) {
   section {
-    height: 90vh;
+    height: auto;
+    min-height: 0;
   }
 }
 @media only screen and (max-width: 400px) {
   section {
-    height: 85vh;
+    height: auto;
+    min-height: 0;
   }
 }
 
@@ -112,6 +122,14 @@ section > div {
   .main1 {
     padding-left: 15px;
     padding-right: 15px;
+  }
+}
+
+@media (min-width: 551px) and (max-width: 767px) {
+  .main,
+  .main1 {
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
   }
 }
 
@@ -898,6 +916,110 @@ html[light-mode="dark"] .certificate-modal__dialog {
     padding: 6px;
   }
 }
+/* =============================================
+   EXPERIENCE HERO - MOBILE RESPONSIVE FIX
+   ============================================= */
+
+/* Make the hero row stack properly on mobile */
+@media (max-width: 767px) {
+  .main > section .container-fluid > .row {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .main > section .godown {
+    width: 100%;
+    padding-top: 1rem;
+    padding-left: 0;
+    display: flex;
+    justify-content: center;
+  }
+
+  .main > section .godown svg {
+    width: min(85%, 280px) !important;
+    height: auto;
+  }
+
+  .main > section .dropdown {
+    width: 100%;
+    position: static;
+    padding: 1rem;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 1rem;
+  }
+}
+
+/* =============================================
+   CERTIFICATE MODAL - SWIPE NAVIGATION
+   ============================================= */
+
+.certificate-modal__nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-top: 1.25rem;
+}
+
+.certificate-modal__nav-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  border-radius: 50%;
+  background: rgba(23, 33, 43, 0.65);
+  color: #fff;
+  font-size: 1.1rem;
+  line-height: 1;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: background 0.2s ease;
+}
+
+.certificate-modal__nav-btn:hover,
+.certificate-modal__nav-btn:focus-visible {
+  background: #6a00bb;
+  outline: none;
+}
+
+.certificate-modal__nav-btn:disabled {
+  opacity: 0.3;
+  cursor: default;
+}
+
+.certificate-modal__counter {
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.65);
+  white-space: nowrap;
+}
+
+html[light-mode="light"] .certificate-modal__counter {
+  color: rgba(0, 0, 0, 0.55);
+}
+
+html[light-mode="light"] .certificate-modal__nav-btn {
+  border-color: rgba(0, 0, 0, 0.2);
+  background: rgba(245, 245, 245, 0.85);
+  color: #17212b;
+}
+
+html[light-mode="light"] .certificate-modal__nav-btn:hover {
+  background: #6a00bb;
+  color: #fff;
+}
+
+/* Swipe hint animation on mobile */
+@media (max-width: 600px) {
+  .certificate-modal__dialog {
+    touch-action: pan-y;
+  }
+}
+
 a:link {
   text-decoration: none !important;
 }
@@ -1098,4 +1220,192 @@ html[light-mode="light"] .volunteerCategory {
 .volunteerCard:hover {
   transform: translateY(-6px);
   box-shadow: 0 20px 40px rgba(31, 38, 135, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.4);
+}
+
+.technical-skills-section {
+  padding-top: 1.5rem;
+  padding-bottom: 4.5rem;
+}
+
+.technical-skills-section .technical-skills-intro {
+  max-width: 760px;
+  margin: 0 auto 2rem;
+  text-align: center;
+}
+
+.technical-skills-section .heading1 {
+  margin: 0 0 0.75rem;
+  font-size: 2rem;
+}
+
+.technical-skills-section .technical-skills-intro p {
+  margin: 0;
+  color: var(--meta-col);
+  line-height: 1.7;
+}
+
+.technical-skills-section .technical-skills-groups {
+  width: 100%;
+  max-width: 1124px;
+  margin: 0 auto;
+}
+
+.technical-skills-section .skill-category {
+  padding: 1.5rem 0 1.7rem;
+  border-top: 1px solid rgba(187, 134, 252, 0.2);
+}
+
+.technical-skills-section .skill-category h3 {
+  margin: 0 0 1rem;
+  color: var(--head-col);
+  font-size: 1.05rem;
+  font-weight: 600;
+}
+
+.technical-skills-section .skill-category--primary h3 {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+}
+
+.technical-skills-section .skill-category--primary h3::before {
+  width: 3px;
+  height: 1rem;
+  border-radius: 2px;
+  background-color: var(--bg-mybtn);
+  content: "";
+}
+
+.technical-skills-section .skill-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(82px, 1fr));
+  gap: 0.8rem 0.55rem;
+  width: 100%;
+  max-width: none;
+  min-height: 0;
+  margin: 0;
+  padding: 0 !important;
+  list-style: none;
+}
+
+.technical-skills-section .skill-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  min-width: 0;
+  min-height: 96px;
+  padding: 0.25rem 0.1rem;
+  border-radius: 6px;
+  color: var(--text-color);
+  text-align: center;
+  cursor: default;
+  transition: color 160ms ease, transform 160ms ease;
+}
+
+.technical-skills-section .skill-icon {
+  display: grid;
+  width: 52px;
+  height: 52px;
+  flex: 0 0 52px;
+  place-items: center;
+  border: 1px solid rgba(187, 134, 252, 0.25);
+  border-radius: 6px;
+  color: var(--text-color);
+  font-size: 1.4rem;
+  transition: border-color 160ms ease, color 160ms ease, background-color 160ms ease;
+}
+
+.technical-skills-section .skill-mark {
+  font-size: 0.9rem;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.technical-skills-section .skill-name {
+  display: block;
+  min-height: 2.6em;
+  color: var(--meta-col);
+  font-size: 0.72rem;
+  line-height: 1.3;
+  overflow-wrap: anywhere;
+}
+
+.technical-skills-section .skill-item:hover,
+.technical-skills-section .skill-item:focus-visible {
+  color: var(--bg-mybtn);
+  transform: translateY(-2px);
+}
+
+.technical-skills-section .skill-item:hover .skill-icon,
+.technical-skills-section .skill-item:focus-visible .skill-icon {
+  border-color: var(--bg-mybtn);
+  background-color: rgba(255, 255, 255, 0.035);
+  color: var(--bg-mybtn);
+}
+
+.technical-skills-section .skill-item:focus-visible {
+  outline: 2px solid var(--bg-mybtn);
+  outline-offset: 3px;
+}
+
+.technical-skills-section .skill-methods {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.55rem;
+  width: 100%;
+  max-width: none;
+  min-height: 0;
+  margin: 0;
+  padding: 0 !important;
+  list-style: none;
+}
+
+.technical-skills-section .skill-methods li {
+  border: 1px solid rgba(187, 134, 252, 0.25);
+  border-radius: 4px;
+  padding: 0.38rem 0.65rem;
+  color: var(--meta-col);
+  font-size: 0.76rem;
+  line-height: 1.25;
+}
+
+@media (max-width: 767px) {
+  .technical-skills-section {
+    padding-bottom: 3rem;
+  }
+
+  .technical-skills-section .skill-grid {
+    grid-template-columns: repeat(auto-fill, minmax(76px, 1fr));
+    gap: 0.7rem 0.4rem;
+  }
+}
+
+@media (max-width: 400px) {
+  .technical-skills-section .technical-skills-intro p {
+    font-size: 0.9rem;
+  }
+
+  .technical-skills-section .skill-grid {
+    grid-template-columns: repeat(auto-fill, minmax(68px, 1fr));
+  }
+
+  .technical-skills-section .skill-icon {
+    width: 48px;
+    height: 48px;
+    flex-basis: 48px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .technical-skills-section .skill-item,
+  .technical-skills-section .skill-icon {
+    transition: none;
+  }
+
+  .technical-skills-section .skill-item:hover,
+  .technical-skills-section .skill-item:focus-visible {
+    transform: none;
+  }
 }

@@ -136,158 +136,114 @@ const showCards2 = () => {
  * =========================================================================
  */
 
-const volunteership = document.querySelector(".volunteership");
+const technicalSkills = document.querySelector(".technical-skills-groups");
 
-const volunteershipcards = [
+const skillCategories = [
   {
-    title: "Playwright",
-    cardImage: "https://playwright.dev/img/playwright-logo.svg",
-    category: "Test Automation",
-    description: "Next-gen end-to-end automation for modern web apps with cross-browser, parallel, and resilient test execution.",
+    title: "Test Automation",
+    primary: true,
+    skills: [
+      { name: "Playwright", mark: "PW" },
+      { name: "Selenium WebDriver", mark: "SE" },
+      { name: "Cypress", mark: "CY" },
+      { name: "Appium", mark: "AP" },
+    ],
   },
   {
-    title: "Cypress",
-    cardImage: "https://www.gartner.com/imagesrv/peer-insights/vendors/logos/cypress.jpg",
-    category: "Test Automation",
-    description: "Developer-friendly end-to-end testing framework for fast, reliable, and headless browser validation.",
+    title: "API and Service Testing",
+    skills: [
+      { name: "Postman", mark: "PM" },
+      { name: "REST APIs", icon: "fas fa-network-wired" },
+      { name: "Swagger/OpenAPI", icon: "fas fa-code" },
+      { name: "Kafka", mark: "K" },
+    ],
   },
   {
-    title: "Selenium WebDriver",
-    cardImage: "assets/images/experience-page/js.png",
-    category: "Test Automation",
-    description: "Industry-standard automated testing suite for complex web applications and cross-browser regression testing.",
+    title: "Programming Languages",
+    skills: [
+      { name: "TypeScript", mark: "TS" },
+      { name: "JavaScript", icon: "fab fa-js" },
+      { name: "Python", icon: "fab fa-python" },
+      { name: "Java", icon: "fab fa-java" },
+      { name: "Elixir", mark: "EX" },
+    ],
   },
   {
-    title: "TypeScript",
-    cardImage: "https://raw.githubusercontent.com/github/explore/80688e429a7d4ef2fca1e82350fe8e3517d3494d/topics/typescript/typescript.png",
-    category: "Programming",
-    description: "Strongly typed programming language used for scalable test frameworks, maintainable codebases, and tooling.",
+    title: "Data and Backend Validation",
+    skills: [
+      { name: "SQL", icon: "fas fa-database" },
+      { name: "Database validation", icon: "fas fa-check-double" },
+      { name: "Backend data verification", icon: "fas fa-server" },
+    ],
   },
   {
-    title: "JavaScript",
-    cardImage: "assets/images/experience-page/js.png",
-    category: "Programming",
-    description: "Core language powering web frontends, test automation scripts, and asynchronous testing libraries.",
+    title: "CI/CD and DevOps",
+    skills: [
+      { name: "Jenkins", icon: "fab fa-jenkins" },
+      { name: "Azure DevOps", icon: "fab fa-microsoft" },
+      { name: "GitLab CI", icon: "fab fa-gitlab" },
+      { name: "Docker", icon: "fab fa-docker" },
+      { name: "Git", icon: "fab fa-git-alt" },
+      { name: "GitHub", icon: "fab fa-github" },
+    ],
   },
   {
-    title: "Python",
-    cardImage: "assets/images/experience-page/python.jpg",
-    category: "Programming",
-    description: "Versatile programming language for test automation scripts, backend testing, and data validation routines.",
+    title: "Performance Testing",
+    skills: [
+      { name: "JMeter", mark: "JM" },
+      { name: "k6", mark: "k6" },
+    ],
   },
   {
-    title: "Postman & REST APIs",
-    cardImage: "assets/images/experience-page/postgress.png",
-    category: "API Testing",
-    description: "Comprehensive API test design, automated endpoint validation across 200+ routes, and Swagger/OpenAPI contracts.",
+    title: "Test Management",
+    skills: [
+      { name: "Jira", icon: "fab fa-jira" },
+      { name: "Xray", mark: "XR" },
+      { name: "TestRail", mark: "TR" },
+    ],
   },
   {
-    title: "Kafka & Event-Driven",
-    cardImage: "assets/images/experience-page/IBM.jpg",
-    category: "Distributed Systems",
-    description: "Event-driven architecture testing, message queue verification, and distributed microservices validation.",
-  },
-  {
-    title: "CI/CD Pipelines",
-    cardImage: "assets/images/experience-page/herku.jpeg",
-    category: "DevOps",
-    description: "Automated test integration into Jenkins, Azure DevOps, and GitLab CI pipelines with regression quality gates.",
-  },
-  {
-    title: "Docker & Containers",
-    cardImage: "assets/images/experience-page/git.jpg",
-    category: "DevOps",
-    description: "Containerized test execution environments for scalable, reproducible automated testing pipelines.",
-  },
-  {
-    title: "Git & GitHub",
-    cardImage: "assets/images/experience-page/github.png",
-    category: "Version Control",
-    description: "Distributed source control, branch protection strategies, PR code reviews, and automated GitHub Actions workflows.",
-  },
-  {
-    title: "Grafana & Observability",
-    cardImage: "assets/images/experience-page/Angular.png",
-    category: "Monitoring",
-    description: "Real-time production health monitoring, logging metrics, defect tracking, and incident reduction observability.",
-  },
-  {
-    title: "JMeter & k6",
-    cardImage: "assets/images/experience-page/django.png",
-    category: "Performance",
-    description: "Load, stress, and spike performance testing to validate high-concurrency throughput and system stability.",
-  },
-  {
-    title: "Jira & Xray",
-    cardImage: "https://automation.eurostarsoftwaretesting.com/wp-content/uploads/2024/03/Xray-V-green.png",
-    category: "Test Management",
-    description: "Enterprise test case repository, defect lifecycle management, traceability matrices, and sprint QA planning.",
-  },
-  {
-    title: "TestRail & Linear",
-    cardImage: "assets/images/experience-page/sass.jpg",
-    category: "Test Management",
-    description: "Structured test planning, test run execution tracking, and modern agile project management.",
-  },
-  {
-    title: "SQL & Databases",
-    cardImage: "assets/images/experience-page/postgress.png",
-    category: "Database",
-    description: "Database schema verification, complex query validation, and data integrity testing for regulated environments.",
-  },
-  {
-    title: "Appium",
-    cardImage: "assets/images/experience-page/html.png",
-    category: "Mobile QA",
-    description: "Cross-platform mobile automation framework for native, hybrid, and web apps across iOS and Android.",
-  },
-  {
-    title: "Elixir",
-    cardImage: "assets/images/experience-page/flask.png",
-    category: "Programming",
-    description: "Concurrent, functional language for high-throughput, fault-tolerant fintech and distributed systems.",
-  },
-  {
-    title: "Java & JUnit",
-    cardImage: "https://cdn.prod.website-files.com/5f10ed4c0ebf7221fb5661a5/5f23a7a9b70a249eed481481_Junit.png",
-    category: "QA & Testing",
-    description: "Object-oriented test framework development, unit testing suites, and automated test runners.",
-  },
-  {
-    title: "React.js",
-    cardImage: "https://web.rijoan.com/wp-content/uploads/2023/08/react.png",
-    category: "Frontend",
-    description: "Component-driven frontend architecture, component testing, and modern Single Page Application engineering.",
+    title: "Testing Practices and Engineering Methods",
+    practices: [
+      "Functional Testing",
+      "UI Testing",
+      "API Testing",
+      "Integration Testing",
+      "Regression Testing",
+      "Exploratory Testing",
+      "Smoke Testing",
+      "Performance Testing",
+      "Agile",
+      "Scrum",
+      "BDD",
+      "SDLC",
+      "STLC",
+      "DevOps",
+      "SRE",
+      "Shift-Left Testing",
+    ],
   },
 ];
 
-/**
- * Renders Tech Stack / Skills Cards into DOM
- */
-const showCards = () => {
-  if (!volunteership) return;
+const renderTechnicalSkills = () => {
+  if (!technicalSkills) return;
 
-  let output = "";
-  volunteershipcards.forEach(({ title, cardImage, description, category }, index) => {
-    output += `
-      <div 
-        class="card volunteerCard" 
-        data-aos="zoom-in-up" 
-        data-aos-duration="600" 
-        data-aos-delay="${(index % 6) * 100}"
-        style="background-image: url('${cardImage}'); background-repeat: no-repeat; background-size: cover; background-position: center;"
-      >
-        <div class="card-overlay"></div>
-        <div class="content">
-          ${category ? `<span class="volunteerCategory">${category}</span>` : ""}
-          <h2 class="volunteerTitle">${title}</h2>
-          <p class="copy">${description}</p>
-        </div>
-      </div>
-    `;
-  });
+  technicalSkills.innerHTML = skillCategories
+    .map(({ title, primary, skills, practices }) => {
+      const content = practices
+        ? `<ul class="skill-methods">${practices.map((practice) => `<li>${practice}</li>`).join("")}</ul>`
+        : `<ul class="skill-grid">${skills
+            .map(({ name, icon, mark }) => {
+              const logo = icon
+                ? `<i class="${icon}" aria-hidden="true"></i>`
+                : `<span class="skill-mark" aria-hidden="true">${mark}</span>`;
+              return `<li class="skill-item" tabindex="0"><span class="skill-icon">${logo}</span><span class="skill-name">${name}</span></li>`;
+            })
+            .join("")}</ul>`;
 
-  volunteership.innerHTML = output;
+      return `<section class="skill-category${primary ? " skill-category--primary" : ""}"><h3>${title}</h3>${content}</section>`;
+    })
+    .join("");
 };
 
 /**
@@ -369,6 +325,11 @@ const showHackathons = () => {
       <div class="certificate-modal__details">
         <h2 class="certificate-modal__title" id="certificate-modal-title"></h2>
         <p class="certificate-modal__description"></p>
+        <div class="certificate-modal__nav">
+          <button type="button" class="certificate-modal__nav-btn" id="cert-prev" aria-label="Previous certificate">&#8249;</button>
+          <span class="certificate-modal__counter" id="cert-counter"></span>
+          <button type="button" class="certificate-modal__nav-btn" id="cert-next" aria-label="Next certificate">&#8250;</button>
+        </div>
       </div>
     </div>
   `;
@@ -377,23 +338,53 @@ const showHackathons = () => {
   const modalImage = certificateModal.querySelector(".certificate-modal__image");
   const modalTitle = certificateModal.querySelector(".certificate-modal__title");
   const modalDescription = certificateModal.querySelector(".certificate-modal__description");
+  const prevBtn = certificateModal.querySelector("#cert-prev");
+  const nextBtn = certificateModal.querySelector("#cert-next");
+  const counterEl = certificateModal.querySelector("#cert-counter");
+
+  let currentCertIndex = 0;
+
+  const updateModalContent = (index) => {
+    const certificate = certifications[index];
+    if (!certificate) return;
+    currentCertIndex = index;
+    modalImage.src = certificate.image;
+    modalImage.alt = certificate.title;
+    modalTitle.textContent = certificate.title;
+    modalDescription.textContent = certificate.desp;
+    if (counterEl) counterEl.textContent = `${index + 1} / ${certifications.length}`;
+    if (prevBtn) prevBtn.disabled = index === 0;
+    if (nextBtn) nextBtn.disabled = index === certifications.length - 1;
+  };
+
   const closeCertificateModal = () => {
     certificateModal.hidden = true;
     document.body.style.overflow = "";
   };
 
+  const openCertificateModal = (index) => {
+    updateModalContent(index);
+    certificateModal.hidden = false;
+    document.body.style.overflow = "hidden";
+    certificateModal.querySelector(".certificate-modal__close").focus();
+  };
+
+  if (prevBtn) {
+    prevBtn.addEventListener("click", () => {
+      if (currentCertIndex > 0) openCertificateModal(currentCertIndex - 1);
+    });
+  }
+
+  if (nextBtn) {
+    nextBtn.addEventListener("click", () => {
+      if (currentCertIndex < certifications.length - 1) openCertificateModal(currentCertIndex + 1);
+    });
+  }
+
   hackathonSection.querySelectorAll(".certificate-button").forEach((button) => {
     button.addEventListener("click", () => {
-      const certificate = certifications[Number(button.dataset.certificateIndex)];
-      if (!certificate) return;
-
-      modalImage.src = certificate.image;
-      modalImage.alt = certificate.title;
-      modalTitle.textContent = certificate.title;
-      modalDescription.textContent = certificate.desp;
-      certificateModal.hidden = false;
-      document.body.style.overflow = "hidden";
-      certificateModal.querySelector(".certificate-modal__close").focus();
+      const idx = Number(button.dataset.certificateIndex);
+      openCertificateModal(idx);
     });
   });
 
@@ -402,8 +393,35 @@ const showHackathons = () => {
     if (event.target === certificateModal) closeCertificateModal();
   });
   document.addEventListener("keydown", (event) => {
-    if (event.key === "Escape" && !certificateModal.hidden) closeCertificateModal();
+    if (certificateModal.hidden) return;
+    if (event.key === "Escape") closeCertificateModal();
+    if (event.key === "ArrowLeft" && currentCertIndex > 0) openCertificateModal(currentCertIndex - 1);
+    if (event.key === "ArrowRight" && currentCertIndex < certifications.length - 1) openCertificateModal(currentCertIndex + 1);
   });
+
+  // Touch swipe support for the modal dialog
+  const dialog = certificateModal.querySelector(".certificate-modal__dialog");
+  let touchStartX = 0;
+  let touchEndX = 0;
+  const SWIPE_THRESHOLD = 50;
+
+  dialog.addEventListener("touchstart", (e) => {
+    touchStartX = e.changedTouches[0].clientX;
+  }, { passive: true });
+
+  dialog.addEventListener("touchend", (e) => {
+    touchEndX = e.changedTouches[0].clientX;
+    const diff = touchStartX - touchEndX;
+    if (Math.abs(diff) >= SWIPE_THRESHOLD) {
+      if (diff > 0 && currentCertIndex < certifications.length - 1) {
+        // Swiped left → next
+        openCertificateModal(currentCertIndex + 1);
+      } else if (diff < 0 && currentCertIndex > 0) {
+        // Swiped right → previous
+        openCertificateModal(currentCertIndex - 1);
+      }
+    }
+  }, { passive: true });
 
   // Re-initialize or update swiper if available
   if (typeof Swiper !== "undefined" && document.querySelector(".blog-slider")) {
@@ -431,7 +449,7 @@ const showHackathons = () => {
 
 const initializeExperience = () => {
   showCards2();
-  showCards();
+  renderTechnicalSkills();
   showHackathons();
 
   // Refresh AOS after DOM elements are rendered

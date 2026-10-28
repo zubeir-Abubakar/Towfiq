@@ -103,13 +103,17 @@ body[light-mode="dark"] .light-mode-button span:nth-child(2) {
 
 @media (max-width: 766px) {
   .dropdown {
-    position: absolute;
-    padding-right: 3.5rem;
+    position: static;
+    padding-right: 0;
+    text-align: center;
+    padding: 1rem 1rem 2rem;
   }
   .godown {
     z-index: 1;
-    padding-top: 15rem;
-    padding-left: 3.3rem;
+    padding-top: 2rem;
+    padding-left: 1rem;
+    display: flex;
+    justify-content: center;
   }
 }
 
@@ -682,9 +686,60 @@ ul {
   }
 }
 
-/* Responsive*/
+/* =============================================
+   PROJECTS HERO SECTION - MOBILE FIXES
+   ============================================= */
 
-@media (min-width: 320px) and (max-width: 321px) {
+.projects-hero-section {
+  height: 70vh;
+  min-height: 420px;
+}
+
+.projects-hero-row {
+  height: 100%;
+  align-items: center;
+}
+
+@media (max-width: 767px) {
+  .projects-hero-section {
+    height: auto;
+    min-height: 0;
+    padding-bottom: 2rem;
+  }
+
+  .projects-hero-row {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .projects-hero-row .godown {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding-top: 1.5rem;
+    padding-left: 0;
+  }
+
+  .projects-hero-row .godown svg {
+    width: min(90%, 320px);
+    height: auto;
+  }
+
+  .projects-hero-row .dropdown {
+    width: 100%;
+    text-align: center;
+    padding: 1rem 1rem 2rem;
+    margin-top: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .projects-hero-section {
+    padding-bottom: 1rem;
+  }
+}
+
+
   .menu-content {
     margin-top: -4.5rem;
     margin-right: 20px;
@@ -795,13 +850,13 @@ ul {
 
 @media only screen and (max-width: 767px) {
   .project-box {
-    margin-top: 18rem;
+    margin-top: 2rem;
   }
 }
 
 @media only screen and (max-width: 450px) {
   .project-box {
-    margin-top: 18rem;
+    margin-top: 2rem;
   }
 }
 

@@ -58,7 +58,7 @@
   <link rel="apple-touch-icon" href="assets/images/qa-engineer.png" />
 </head>
 
-<body class="no-scroll-preload">
+<body class="no-scroll-preload projects-page">
     <!-- loader -->
     <div class="loader-container">
         <div class="atom">
@@ -295,19 +295,26 @@ add
                     </div>
                     <div class="dropdown col-md-6 d-flex mt-5 flex-column text-center justify-content-center animate__animated animate__zoomIn animate__delay-1s">
                         <h2 class="main-heading mb-0 projects_head">My <span class="my_projects">Projects</span></h2>
-                        <p class="pre-heading font-weight-bolder" class="mb-0 mt-3 text-center animate__animated animate__zoomIn animate__delay-2s">
-                          My projects makes use of vast variety of latest technology tools. My best experience is to create web applications projects and deploy them to web applications sites e.g Heroku and github using cloud infrastructure.                        </p>
+                        <p class="pre-heading font-weight-bolder mb-0 mt-3 text-center animate__animated animate__zoomIn animate__delay-2s">
+                          A selection of digital products, services, and independent web projects.
+                        </p>
                     </div>
                 </div>
             </div>
         </section>
     </div>
 
-    <div class="project-box" style="padding: 20px;">
-        <div class="row page-content projectcards">
-            <!-- Dynamic project card -->
-        </div>
-    </div>
+    <main class="project-box projects-section" aria-label="Projects">
+      <div class="projectcards" aria-live="polite"></div>
+    </main>
+
+    <section class="journey-section" aria-labelledby="journey-heading">
+      <header class="journey-intro">
+        <h2 id="journey-heading">My journey so far</h2>
+        <p>From backend development to quality engineering, automation, and QA leadership.</p>
+      </header>
+      <ol class="career-timeline" aria-label="Professional experience"></ol>
+    </section>
 
 
 

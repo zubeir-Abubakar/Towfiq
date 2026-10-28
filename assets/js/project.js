@@ -1,114 +1,134 @@
-AOS.init();
-/* Project Cards */
+if (typeof AOS !== "undefined") {
+  AOS.init({ once: true });
+}
 
 const projectcards = document.querySelector(".projectcards");
+const careerTimeline = document.querySelector(".career-timeline");
 
-// Array of object for projects
 const projects = [
   {
     title: "CASHIA",
     cardImage: "assets/images/project-page/cashia.png",
-    description: "A fintech platform focused on simplifying digital financial services and payment experiences. Built with a focus on performance, scalability, and user trust , helping individuals and businesses move money with confidence.",
+    description: "A fintech platform for digital financial services and payments. QA work covered web and mobile journeys, API validation, regression testing, and release confidence.",
     tags: ["Javascript", "React JS"],
-    tagimg: "https://cdn.iconscout.com/icon/free/png-512/react-1-282599.png",
     Previewlink: "https://cashia.com/",
   },
   {
     title: "Cashia Developer Docs",
     cardImage: "assets/images/project-page/cashiaDoc.png",
-    description: "A developer documentation portal for Cashia's integrations, APIs, authentication flows, and fintech onboarding. Built to make the developer experience delightful with clear, fast, and searchable..",
+    description: "Integration documentation for Cashia's payment APIs, authentication, and hosted checkout, helping developers navigate implementation and onboarding.",
     tags: ["JAVA", "Python"],
     Previewlink: "https://developer.cashia.com/docs",
   },
-  // {
-  //   title: "Github Search",
-  //   cardImage: "assets/images/project-page/git.jpg",
-  //   description: "Github search built using Angular and typscript and also github Api",
-  //   tags: ["Typscript", "Angular"],
-  //   tagimg: "https://cdn.iconscout.com/icon/free/png-512/react-1-282599.png",
-  //   Previewlink: "https://zubeir-abubakar.github.io/git-search/home",
-  //   Githublink: "https://github.com/zubeir-Abubakar/Github-Search",
-  // },
   {
-    title: " Duopole",
+    title: "Duopole",
     cardImage: "assets/images/project-page/Duopole.png",
-    description: "Exercise tracker built using basic redux.",
+    description: "A fresh-produce market development site connecting Kenyan suppliers with potential buyers in Switzerland, with an initial focus on avocados.",
     tags: ["CSS", "HTML5"],
-    tagimg: "https://miro.medium.com/max/2800/0*U2DmhXYumRyXH6X1.png",
     Previewlink: "https://duopole.vercel.app/",
   },
   {
     title: "Malley Prairie",
     cardImage: "assets/images/project-page/daycare.png",
-    description: "Tasty Hotel Menu using JavaScript.",
+    description: "An independent childcare-site concept presenting MalleyPrairie's care locations, educational approach, practical information, and enrollment process.",
     tags: ["JavaScript", "HTML5"],
     Previewlink: "https://malleyprairie.vercel.app/",
-    Githublink: "https://github.com/zubeir-Abubakar/Hotel",
   },
   {
     title: "Nobilis",
     cardImage: "assets/images/project-page/Nobilis.png",
-    description: "Tasty Hotel Menu using JavaScript.",
+    description: "The website of a Nairobi-based software company, presenting its web and mobile development services, case studies, and client work.",
+    tags: [],
     Previewlink: "https://nobilisltd.co.ke/",
-  },
-  {
-    title: "Sliding Form",
-    cardImage: "assets/images/project-page/slide.png",
-    description: "Slidding Form created using Css and Javascript.",
-    tags: ["CSS", "Javascript"],
-    tagimg: "https://miro.medium.com/max/816/1*mn6bOs7s6Qbao15PMNRyOA.png",
-    Previewlink: "https://zubeir-abubakar.github.io/sliding-form/",
-    Githublink: "https://github.com/zubeir-Abubakar/sliding-form",
   },
 ];
 
-// function for rendering project cards data
-const showCards = () => {
-  let output = "";
-  projects.forEach(({ title, cardImage, Previewlink, Githublink }) => {
-    output += `       
-        <div class="column skill-card card" style="margin: 15px"data-aos="zoom-in-up" data-aos-easing="linear" data-aos-delay="300" data-aos-duration="600" >
-          <div class="wrapper" style="background: url(${cardImage}) center / cover no-repeat;">
-            <div class="header">
-            </div>
-            <div class="data">
-              <div class="content">
-              <div class="title-div">
-                <h1 class="title"><a href="#">${title}</a></h1>
-                
-                </div>
-            <ul class="menu-content"><br>
-                  <li><a href="${Previewlink}" class="social-icon"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="25" viewBox="0 0 30 28" fill="none" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather feather-monitor"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg></a></li>
-                </ul>
-              </div>
-            </div>
+const experience = [
+  {
+    title: "Lead QA Engineer",
+    company: "Cashia",
+    dates: "October 2023 – March 2026",
+    description: "Led QA strategy across fintech web and mobile products, building Playwright, Cypress, and Selenium automation in CI/CD, validating APIs and distributed services, and owning release readiness. Automation and process improvements reduced regression execution time by about 40%.",
+    tags: ["Playwright", "Cypress", "Selenium", "TypeScript", "CI/CD", "API Testing"],
+  },
+  {
+    title: "QA Engineer (Contract)",
+    company: "Nobilis",
+    dates: "February 2024 – May 2024",
+    description: "Tested ERP and financial systems through functional, integration, and API testing, validated data with SQL, and automated regression scenarios using Selenium WebDriver and Python.",
+    tags: ["Selenium WebDriver", "Python", "SQL", "ERP", "API Testing"],
+  },
+  {
+    title: "QA Engineer",
+    company: "Cashia",
+    dates: "March 2021 – October 2023",
+    description: "Built regression, integration, and smoke coverage for web and mobile applications; validated REST APIs and performance, and partnered with developers to catch defects early.",
+    tags: ["API Testing", "JMeter", "Regression", "Mobile QA", "REST APIs"],
+  },
+  {
+    title: "Junior Backend Developer",
+    company: "Safaricom",
+    dates: "September 2019 – March 2020",
+    description: "Developed backend features in Python and JavaScript, wrote unit and integration tests, and worked with QA on system validation and UAT for distributed services.",
+    tags: ["Python", "JavaScript", "Unit Testing", "UAT", "REST APIs"],
+  },
+];
+
+const renderProjects = () => {
+  if (!projectcards) return;
+
+  projectcards.innerHTML = projects
+    .map(({ title, cardImage, description, tags, Previewlink, Githublink }, index) => {
+      const tagList = tags.length
+        ? `<ul class="project-tags" aria-label="Technologies">${tags.map((tag) => `<li>${tag}</li>`).join("")}</ul>`
+        : "";
+      const visitLink = Previewlink
+        ? `<a class="project-visit" href="${Previewlink}" target="_blank" rel="noopener noreferrer">Visit Page <i class="fas fa-arrow-up-right-from-square" aria-hidden="true"></i></a>`
+        : `<span class="project-unavailable" aria-disabled="true">Visit Page unavailable</span>`;
+      const sourceLink = Githublink
+        ? `<a class="project-source" href="${Githublink}" target="_blank" rel="noopener noreferrer">Source code</a>`
+        : "";
+      const preview = Previewlink
+        ? `<a href="${Previewlink}" target="_blank" rel="noopener noreferrer" aria-label="Open ${title}"><img src="${cardImage}" alt="${title} website preview" loading="lazy"></a>`
+        : `<img src="${cardImage}" alt="${title} preview" loading="lazy">`;
+
+      return `
+        <article class="project-row" data-aos="fade-up" data-aos-delay="${index * 80}">
+          <div class="project-preview">${preview}</div>
+          <div class="project-details">
+            ${tagList}
+            <h2>${title}</h2>
+            <p>${description}</p>
+            <div class="project-actions">${visitLink}${sourceLink}</div>
           </div>
-        </div>`;
-  });
-  projectcards.innerHTML = output;
+        </article>`;
+    })
+    .join("");
 };
-document.addEventListener("DOMContentLoaded", showCards);
 
-function myFunction() {
-  // Declare variables
-  var input, button, i, skillcard, card, title;
-  input = document.getElementById("myInput").value;
-  input = input.toUpperCase();
-  skillcard = document.getElementsByClassName("skill-card");
-  card = document.getElementsByClassName("card");
-  title = document.getElementsByClassName("title");
+const renderExperience = () => {
+  if (!careerTimeline) return;
 
-  // Loop through all list items, and hide those who don't match the search query
-  for (i = 0; i < button.length; i++) {
-    if (
-      button[i].innerHTML.toUpperCase().includes(input) ||
-      title[i].innerHTML.toUpperCase().includes(input)
-    ) {
-      skillcard[i].style.display = "";
-      card[i].style.display = "";
-    } else {
-      skillcard[i].style.display = "none";
-      card[i].style.display = "none";
-    }
-  }
-}
+  careerTimeline.innerHTML = experience
+    .map(({ title, company, dates, description, tags }) => `
+      <li class="career-entry">
+        <span class="career-marker" aria-hidden="true"></span>
+        <article>
+          <div class="career-heading">
+            <div>
+              <h3>${title}</h3>
+              <p class="career-company">${company}</p>
+            </div>
+            <time>${dates}</time>
+          </div>
+          <p class="career-description">${description}</p>
+          <ul class="career-tags" aria-label="Skills and tools">${tags.map((tag) => `<li>${tag}</li>`).join("")}</ul>
+        </article>
+      </li>`)
+    .join("");
+};
+
+document.addEventListener("DOMContentLoaded", () => {
+  renderProjects();
+  renderExperience();
+});

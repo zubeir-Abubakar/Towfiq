@@ -401,6 +401,287 @@ ul {
   /* margin: 1rem auto; */
 }
 
+.projects-page .projects-section {
+  display: block;
+  width: min(100% - 2rem, 1140px);
+  margin: 0 auto;
+  padding: 1rem 0 4rem;
+}
+
+.projects-page .projectcards {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(3rem, 7vw, 6rem);
+}
+
+.projects-page .project-row {
+  display: flex;
+  align-items: center;
+  gap: clamp(2rem, 6vw, 5rem);
+  width: 100%;
+}
+
+.projects-page .project-row:nth-child(even) {
+  flex-direction: row-reverse;
+}
+
+.projects-page .project-preview,
+.projects-page .project-details {
+  flex: 1 1 0;
+  min-width: 0;
+}
+
+.projects-page .project-preview {
+  overflow: hidden;
+  border: 1px solid rgba(187, 134, 252, 0.24);
+  border-radius: 8px;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
+  line-height: 0;
+}
+
+.projects-page .project-preview a,
+.projects-page .project-preview img {
+  display: block;
+  width: 100%;
+}
+
+.projects-page .project-preview img {
+  height: auto;
+}
+
+.projects-page .project-details h2 {
+  margin: 0 0 0.8rem;
+  color: var(--text);
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.projects-page .project-details p {
+  margin: 0 0 1.25rem;
+  color: var(--text-color);
+  line-height: 1.75;
+}
+
+.projects-page .project-tags,
+.projects-page .career-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  margin: 0 0 0.9rem;
+  padding: 0;
+  list-style: none;
+}
+
+.projects-page .project-tags li,
+.projects-page .career-tags li {
+  border: 1px solid rgba(187, 134, 252, 0.25);
+  border-radius: 999px;
+  padding: 0.2rem 0.6rem;
+  color: var(--text-color);
+  font-size: 0.72rem;
+  line-height: 1.4;
+}
+
+.projects-page .project-actions {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.projects-page .project-visit,
+.projects-page .project-unavailable {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  min-height: 44px;
+  border: 1px solid var(--bg-mybtn);
+  border-radius: 5px;
+  padding: 0.6rem 1rem;
+  color: var(--text);
+  font-weight: 600;
+}
+
+.projects-page .project-visit {
+  background: linear-gradient(146deg, #328806 6%, #0f85fa 57%, #0fe7fa 100%);;
+}
+
+.projects-page .project-visit:hover,
+.projects-page .project-visit:focus-visible {
+  color: var(--text);
+  background: linear-gradient(237deg, #328806 6%, #0f85fa 57%, #0fe7fa 100%);;
+  filter: brightness(1.08);
+}
+
+.projects-page .project-unavailable {
+  opacity: 0.65;
+}
+
+.projects-page .project-source {
+  color: var(--text-color);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.projects-page .journey-section {
+  width: min(100% - 2rem, 920px);
+  margin: 0 auto;
+  padding: 3.5rem 0 5rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.projects-page .journey-intro {
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.projects-page .journey-intro h2 {
+  margin: 0 0 0.5rem;
+  color: #bb96eb;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  font-size: 1.7rem;
+  font-weight: 700;
+}
+
+.projects-page .journey-intro p {
+  margin: 0;
+  color: var(--text-color);
+}
+
+.projects-page .career-timeline {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  
+}
+
+.projects-page .career-timeline::before {
+  position: absolute;
+  top: 0.5rem;
+  bottom: 1rem;
+  left: 0.72rem;
+  width: 1px;
+  background-color: rgba(187, 134, 252, 0.3);
+  content: "";
+}
+
+.projects-page .career-entry {
+  position: relative;
+  display: flex;
+  gap: 1.25rem;
+  padding: 0 0 1.7rem;
+}
+
+.projects-page .career-entry article {
+  flex: 1;
+  min-width: 0;
+  padding: 0 0 1.5rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.projects-page .career-marker {
+  z-index: 1;
+  flex: 0 0 1.45rem;
+  width: 1.45rem;
+  height: 1.45rem;
+  margin-top: 0.1rem;
+  border: 3px solid var(--bg);
+  border-radius: 50%;
+  background-color: var(--bg-mybtn);
+  box-shadow: 0 0 0 1px rgba(187, 134, 252, 0.45);
+}
+
+.projects-page .career-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.projects-page .career-heading h3 {
+  margin: 0 0 0.3rem;
+  color: var(--text);
+  font-size: 1.05rem;
+  color: #bb96eb;
+  font-weight: 700;
+}
+
+.projects-page .career-company {
+  margin: 0;
+  color: var(--bg-mybtn);
+  font-weight: 600;
+  color: #96eba3;
+}
+
+.projects-page .career-heading time {
+  flex: 0 0 auto;
+  color: var(--text-color);
+  font-size: 0.8rem;
+  text-align: right;
+}
+
+.projects-page .career-description {
+  margin: 0.8rem 0;
+  color: var(--text-color);
+  line-height: 1.7;
+}
+
+.projects-page .career-tags {
+  margin-bottom: 0;
+}
+
+@media (max-width: 767px) {
+  .projects-page .dropdown {
+    position: static;
+    padding-right: 0;
+  }
+
+  .projects-page .projects-section {
+    width: calc(100% - 2rem);
+  }
+
+  .projects-page .projectcards {
+    gap: 3rem;
+  }
+
+  .projects-page .project-row,
+  .projects-page .project-row:nth-child(even) {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 1.25rem;
+  }
+
+  .projects-page .project-preview,
+  .projects-page .project-details {
+    width: 100%;
+  }
+
+  .projects-page .project-details h2 {
+    font-size: 1.3rem;
+  }
+
+  .projects-page .journey-section {
+    width: calc(100% - 2rem);
+    padding-top: 2.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .projects-page .career-heading {
+    flex-direction: column;
+    gap: 0.35rem;
+  }
+
+  .projects-page .career-heading time {
+    text-align: left;
+  }
+}
+
 /* Responsive*/
 
 @media (min-width: 320px) and (max-width: 321px) {

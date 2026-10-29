@@ -149,7 +149,7 @@ html[light-mode="dark"] .home-about strong {
   }
 
   .home-hero {
-    padding-top: 24px;
+    padding-top: 0px;
   }
 
   .home-hero-row {
@@ -242,6 +242,8 @@ html[light-mode="dark"] .home-about strong {
 
 .text .header {
   font-weight: bold;
+  color: #3b0685;
+  font-style:oblique ;
 }
 
 .text {
@@ -856,6 +858,7 @@ a:hover {
 
   .home-greeting .header {
     display: block;
+  
   }
 
   .home-hero-row {

@@ -326,6 +326,7 @@ const showHackathons = () => {
       <div class="certificate-modal__details">
         <h2 class="certificate-modal__title" id="certificate-modal-title"></h2>
         <p class="certificate-modal__description"></p>
+        <a class="certificate-modal__fallback" target="_blank" rel="noopener">Open certification image</a>
         <div class="certificate-modal__nav">
           <button type="button" class="certificate-modal__nav-btn" id="cert-prev" aria-label="Previous certificate">&#8249;</button>
           <span class="certificate-modal__counter" id="cert-counter"></span>
@@ -342,15 +343,21 @@ const showHackathons = () => {
   const prevBtn = certificateModal.querySelector("#cert-prev");
   const nextBtn = certificateModal.querySelector("#cert-next");
   const counterEl = certificateModal.querySelector("#cert-counter");
+  const fallbackLink = certificateModal.querySelector(".certificate-modal__fallback");
+  const closeBtn = certificateModal.querySelector(".certificate-modal__close");
 
   let currentCertIndex = 0;
+  let lastFocusedTrigger = null;
 
   const updateModalContent = (index) => {
     const certificate = certifications[index];
     if (!certificate) return;
     currentCertIndex = index;
+    modalImage.hidden = false;
+    fallbackLink.hidden = true;
     modalImage.src = certificate.image;
     modalImage.alt = certificate.title;
+    fallbackLink.href = certificate.image;
     modalTitle.textContent = certificate.title;
     modalDescription.textContent = certificate.desp;
     if (counterEl) counterEl.textContent = `${index + 1} / ${certifications.length}`;
@@ -359,45 +366,76 @@ const showHackathons = () => {
   };
 
   const closeCertificateModal = () => {
+    if (certificateModal.hidden) return;
     certificateModal.hidden = true;
-    document.body.style.overflow = "";
+    window.setPortfolioScrollLock("certificate", false);
+    if (lastFocusedTrigger && lastFocusedTrigger.isConnected) {
+      lastFocusedTrigger.focus();
+    }
+    lastFocusedTrigger = null;
   };
 
-  const openCertificateModal = (index) => {
+  const openCertificateModal = (index, trigger) => {
+    if (certificateModal.hidden) {
+      lastFocusedTrigger = trigger || document.activeElement;
+    }
     updateModalContent(index);
     certificateModal.hidden = false;
-    document.body.style.overflow = "hidden";
-    certificateModal.querySelector(".certificate-modal__close").focus();
+    window.setPortfolioScrollLock("certificate", true);
+    closeBtn.focus();
   };
+
+  modalImage.addEventListener("error", () => {
+    modalImage.hidden = true;
+    fallbackLink.hidden = false;
+  });
+  modalImage.addEventListener("load", () => {
+    fallbackLink.hidden = true;
+  });
 
   if (prevBtn) {
     prevBtn.addEventListener("click", () => {
-      if (currentCertIndex > 0) openCertificateModal(currentCertIndex - 1);
+      if (currentCertIndex > 0) updateModalContent(currentCertIndex - 1);
     });
   }
 
   if (nextBtn) {
     nextBtn.addEventListener("click", () => {
-      if (currentCertIndex < certifications.length - 1) openCertificateModal(currentCertIndex + 1);
+      if (currentCertIndex < certifications.length - 1) updateModalContent(currentCertIndex + 1);
     });
   }
 
   hackathonSection.querySelectorAll(".certificate-button").forEach((button) => {
     button.addEventListener("click", () => {
       const idx = Number(button.dataset.certificateIndex);
-      openCertificateModal(idx);
+      openCertificateModal(idx, button);
     });
   });
 
-  certificateModal.querySelector(".certificate-modal__close").addEventListener("click", closeCertificateModal);
+  closeBtn.addEventListener("click", closeCertificateModal);
   certificateModal.addEventListener("click", (event) => {
     if (event.target === certificateModal) closeCertificateModal();
   });
   document.addEventListener("keydown", (event) => {
     if (certificateModal.hidden) return;
-    if (event.key === "Escape") closeCertificateModal();
-    if (event.key === "ArrowLeft" && currentCertIndex > 0) openCertificateModal(currentCertIndex - 1);
-    if (event.key === "ArrowRight" && currentCertIndex < certifications.length - 1) openCertificateModal(currentCertIndex + 1);
+    if (event.key === "Escape") {
+      closeCertificateModal();
+      return;
+    }
+    if (event.key === "ArrowLeft" && currentCertIndex > 0) updateModalContent(currentCertIndex - 1);
+    if (event.key === "ArrowRight" && currentCertIndex < certifications.length - 1) updateModalContent(currentCertIndex + 1);
+    if (event.key === "Tab") {
+      const focusable = [...certificateModal.querySelectorAll("button:not(:disabled), a[href]:not([hidden])")];
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+      if (event.shiftKey && document.activeElement === first) {
+        event.preventDefault();
+        last.focus();
+      } else if (!event.shiftKey && document.activeElement === last) {
+        event.preventDefault();
+        first.focus();
+      }
+    }
   });
 
   // Touch swipe support for the modal dialog
@@ -466,5 +504,4 @@ if (document.readyState === "loading") {
 } else {
   initializeExperience();
 }
-
 

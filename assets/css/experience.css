@@ -718,6 +718,8 @@ html[light-mode="dark"] .blog-slider {
   }
 }
 .blog-slider__content {
+  position: relative;
+  z-index: 1;
   padding-right: 25px;
 }
 @media screen and (max-width: 768px) {
@@ -1451,5 +1453,163 @@ html[light-mode="light"] .volunteerCategory {
   .technical-skills-section .skill-item:hover,
   .technical-skills-section .skill-item:focus-visible {
     transform: none;
+  }
+}
+
+/* Responsive certification viewer */
+.certificate-modal {
+  z-index: 2100;
+  width: 100%;
+  height: 100vh;
+  height: 100dvh;
+  padding: max(16px, env(safe-area-inset-top)) max(16px, env(safe-area-inset-right))
+    max(16px, env(safe-area-inset-bottom)) max(16px, env(safe-area-inset-left));
+  overflow: auto;
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
+}
+
+.certificate-modal__dialog {
+  grid-template-areas:
+    "close close"
+    "image details";
+  grid-template-rows: auto minmax(0, 1fr);
+  width: min(1000px, 100%);
+  max-height: calc(100vh - 32px);
+  max-height: calc(100dvh - env(safe-area-inset-top) - env(safe-area-inset-bottom) - 32px);
+  margin: auto;
+  padding: 14px clamp(18px, 3vw, 30px) 26px;
+  overflow: auto;
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
+  background: linear-gradient(140deg, rgba(246, 245, 252, 0.96), rgba(233, 239, 249, 0.94));
+}
+
+.certificate-modal__close {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  grid-area: close;
+  justify-self: end;
+  margin-bottom: -38px;
+  flex: 0 0 38px;
+  width: 38px;
+  height: 38px;
+  outline-offset: 3px;
+}
+
+.certificate-modal__image {
+  grid-area: image;
+  align-self: center;
+  width: 100%;
+  max-height: min(68vh, 620px);
+  max-height: min(68dvh, 620px);
+  object-fit: contain;
+}
+
+.certificate-modal__details {
+  grid-area: details;
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.certificate-modal__title {
+  padding-right: 28px;
+  color: #29233b;
+  font-size: clamp(1.2rem, 3vw, 1.65rem);
+}
+
+.certificate-modal__description {
+  color: #4a4657;
+  font-size: 0.9rem;
+  line-height: 1.7;
+}
+
+.certificate-modal__fallback {
+  display: inline-block;
+  margin-top: 6px;
+  padding: 10px 14px;
+  border: 1px solid rgba(106, 0, 187, 0.24);
+  border-radius: 10px;
+  color: #4e00bb;
+  background: rgba(106, 0, 187, 0.07);
+  font-size: 0.86rem;
+  font-weight: 600;
+}
+
+.certificate-modal__fallback[hidden] {
+  display: none;
+}
+
+.certificate-modal__fallback:focus-visible {
+  outline: 3px solid rgba(106, 0, 187, 0.45);
+  outline-offset: 3px;
+}
+
+html[light-mode="dark"] .certificate-modal__dialog {
+  border-color: rgba(224, 218, 249, 0.2);
+  background: linear-gradient(140deg, rgba(26, 31, 51, 0.97), rgba(26, 43, 61, 0.96));
+}
+
+html[light-mode="dark"] .certificate-modal__title,
+html[light-mode="dark"] .certificate-modal__description {
+  color: #f5f2fb;
+}
+
+html[light-mode="dark"] .certificate-modal__fallback {
+  border-color: rgba(201, 173, 245, 0.34);
+  color: #e0ccff;
+  background: rgba(157, 111, 219, 0.16);
+}
+
+@media (max-width: 767px) {
+  .certificate-modal {
+    align-items: flex-start;
+    padding: max(12px, env(safe-area-inset-top)) max(10px, env(safe-area-inset-right))
+      max(12px, env(safe-area-inset-bottom)) max(10px, env(safe-area-inset-left));
+  }
+
+  .certificate-modal__dialog {
+    grid-template-areas:
+      "close"
+      "image"
+      "details";
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: auto auto auto;
+    gap: 12px;
+    width: min(100%, 620px);
+    max-height: calc(100vh - 24px);
+    max-height: calc(100dvh - env(safe-area-inset-top) - env(safe-area-inset-bottom) - 24px);
+    padding: 10px 16px 18px;
+    border-radius: 17px;
+  }
+
+  .certificate-modal__image {
+    width: 100%;
+    max-height: min(48vh, 430px);
+    max-height: min(48dvh, 430px);
+  }
+
+  .certificate-modal__details {
+    align-self: start;
+    padding: 4px 2px 0;
+  }
+
+  .certificate-modal__title {
+    margin-bottom: 8px;
+    padding-right: 0;
+    font-size: 1.2rem;
+  }
+
+  .certificate-modal__description {
+    margin-bottom: 10px;
+    font-size: 0.86rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .certificate-modal,
+  .certificate-modal__dialog {
+    scroll-behavior: auto;
   }
 }

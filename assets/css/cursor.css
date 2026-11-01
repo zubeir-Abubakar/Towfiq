@@ -8,7 +8,7 @@ body * {
 .cursor-dot,
 .cursor-dot-outline {
   pointer-events: none;
-  z-index: 2;
+  z-index: 1201;
   position: absolute;
   top: 50%;
   left: 50%;

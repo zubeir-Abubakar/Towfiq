@@ -1239,7 +1239,7 @@ html[light-mode="light"] .volunteerCategory {
 }
 
 .technical-skills-section .technical-skills-intro p {
-  margin: 0;
+  margin: 0 0 2rem;
   color: var(--meta-col);
   line-height: 1.7;
 }
@@ -1248,9 +1248,59 @@ html[light-mode="light"] .volunteerCategory {
   width: 100%;
   max-width: 1124px;
   margin: 0 auto;
+  font-size: 0;
 }
 
 .technical-skills-section .skill-category {
+  font-size: 1rem;
+  box-sizing: border-box;
+}
+
+/* Technical skills: inline-block display arranged in 2 rows */
+.technical-skills-section .skill-category--tech,
+.technical-skills-section .skill-category:not(.skill-category--practices) {
+  display: inline-block;
+  vertical-align: top;
+  padding: 1.5rem 0.85rem 1.7rem;
+  border-top: 1px solid rgba(187, 134, 252, 0.2);
+}
+
+@media (min-width: 992px) {
+  /* Row 1: 4 categories across */
+  .technical-skills-section .skill-category--tech:nth-of-type(-n+4),
+  .technical-skills-section .skill-category:not(.skill-category--practices):nth-of-type(-n+4) {
+    width: 25%;
+  }
+
+  /* Row 2: 3 categories across */
+  .technical-skills-section .skill-category--tech:nth-of-type(n+5):not(.skill-category--practices),
+  .technical-skills-section .skill-category:not(.skill-category--practices):nth-of-type(n+5) {
+    width: 33.333%;
+  }
+}
+
+@media (min-width: 640px) and (max-width: 991px) {
+  .technical-skills-section .skill-category--tech,
+  .technical-skills-section .skill-category:not(.skill-category--practices) {
+    width: 50%;
+  }
+}
+
+@media (max-width: 639px) {
+  .technical-skills-section .skill-category--tech,
+  .technical-skills-section .skill-category:not(.skill-category--practices) {
+    display: block;
+    width: 100%;
+  }
+}
+
+/* Testing practices: full-width block below the technical skills */
+.technical-skills-section .skill-category--practices,
+.technical-skills-section .skill-category:last-child {
+  display: block;
+  width: 100%;
+  clear: both;
+  font-size: 1rem;
   padding: 1.5rem 0 1.7rem;
   border-top: 1px solid rgba(187, 134, 252, 0.2);
 }
@@ -1277,9 +1327,9 @@ html[light-mode="light"] .volunteerCategory {
 }
 
 .technical-skills-section .skill-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(82px, 1fr));
-  gap: 0.8rem 0.55rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem 0.4rem;
   width: 100%;
   max-width: none;
   min-height: 0;
@@ -1289,12 +1339,10 @@ html[light-mode="light"] .volunteerCategory {
 }
 
 .technical-skills-section .skill-item {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.5rem;
-  min-width: 0;
-  min-height: 96px;
+  display: inline-block;
+  vertical-align: top;
+  width: 70px;
+  min-height: 88px;
   padding: 0.25rem 0.1rem;
   border-radius: 6px;
   color: var(--text-color);
@@ -1304,15 +1352,16 @@ html[light-mode="light"] .volunteerCategory {
 }
 
 .technical-skills-section .skill-icon {
-  display: grid;
-  width: 52px;
-  height: 52px;
-  flex: 0 0 52px;
-  place-items: center;
+  display: flex;
+  margin: 0 auto 0.4rem;
+  width: 48px;
+  height: 48px;
+  align-items: center;
+  justify-content: center;
   border: 1px solid rgba(187, 134, 252, 0.25);
   border-radius: 6px;
   color: var(--text-color);
-  font-size: 1.4rem;
+  font-size: 1.35rem;
   transition: border-color 160ms ease, color 160ms ease, background-color 160ms ease;
 }
 
@@ -1324,10 +1373,10 @@ html[light-mode="light"] .volunteerCategory {
 
 .technical-skills-section .skill-name {
   display: block;
-  min-height: 2.6em;
+  min-height: 2.4em;
   color: var(--meta-col);
   font-size: 0.72rem;
-  line-height: 1.3;
+  line-height: 1.25;
   overflow-wrap: anywhere;
 }
 
@@ -1353,6 +1402,7 @@ html[light-mode="light"] .volunteerCategory {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
+  color: var(--meta-col);
   gap: 0.55rem;
   width: 100%;
   max-width: none;
@@ -1367,18 +1417,13 @@ html[light-mode="light"] .volunteerCategory {
   border-radius: 4px;
   padding: 0.38rem 0.65rem;
   color: var(--meta-col);
-  font-size: 0.76rem;
+  font-size: 0.96rem;
   line-height: 1.25;
 }
 
 @media (max-width: 767px) {
   .technical-skills-section {
     padding-bottom: 3rem;
-  }
-
-  .technical-skills-section .skill-grid {
-    grid-template-columns: repeat(auto-fill, minmax(76px, 1fr));
-    gap: 0.7rem 0.4rem;
   }
 }
 
@@ -1387,14 +1432,13 @@ html[light-mode="light"] .volunteerCategory {
     font-size: 0.9rem;
   }
 
-  .technical-skills-section .skill-grid {
-    grid-template-columns: repeat(auto-fill, minmax(68px, 1fr));
+  .technical-skills-section .skill-item {
+    width: 64px;
   }
 
   .technical-skills-section .skill-icon {
-    width: 48px;
-    height: 48px;
-    flex-basis: 48px;
+    width: 44px;
+    height: 44px;
   }
 }
 

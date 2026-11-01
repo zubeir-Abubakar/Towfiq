@@ -241,7 +241,8 @@ const renderTechnicalSkills = () => {
             })
             .join("")}</ul>`;
 
-      return `<section class="skill-category${primary ? " skill-category--primary" : ""}"><h3>${title}</h3>${content}</section>`;
+      const categoryClass = practices ? "skill-category--practices" : "skill-category--tech";
+      return `<section class="skill-category ${categoryClass}${primary ? " skill-category--primary" : ""}"><h3>${title}</h3>${content}</section>`;
     })
     .join("");
 };

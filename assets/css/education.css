@@ -94,6 +94,7 @@ h4 {
 
 .s2 h4 {
   margin-bottom: 1.2rem;
+  color: var(--head-col);
 }
 
 .qual {

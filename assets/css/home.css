@@ -53,7 +53,7 @@ body{
 .home-content {
   /* z-index: 1; */
   width: min(1180px, calc(100% - 32px));
-  margin: 0 auto;
+  margin: -100px auto;
 }
 
 .home-hero {
@@ -71,7 +71,7 @@ body{
 
 .home-greeting {
   width: 100%;
-  margin-bottom: 30px;
+  margin-bottom: 20px;
   margin-top: 50px;
   font-size: clamp(1.6rem, 3vw, 2.3rem);
 }

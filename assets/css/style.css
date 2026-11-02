@@ -1907,6 +1907,68 @@ html[light-mode="light"] #navbar .third {
     backdrop-filter: none;
   }
 
+  #navbar .navbar-toggler {
+    display: grid;
+    place-items: center;
+    width: 92px;
+    height: 92px;
+    margin: 0 12px;
+    padding: 0;
+    border: 2px solid rgba(220, 214, 237, 0.3);
+    border-radius: 50%;
+    background: rgba(195, 186, 218, 0.1);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06);
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  #navbar .hamburger {
+    width: 36px;
+    height: 28px;
+    margin-left: -30px;
+  
+  }
+
+  #navbar .first,
+  #navbar .second,
+  #navbar .third {
+    height: 4px;
+    background-color: #eeeaf6;
+  }
+
+  #navbar .first {
+    top: 2px;
+  }
+
+  #navbar .second {
+    top: 12px;
+    width: 100%;
+  }
+
+  #navbar .third {
+    bottom: 2px;
+  }
+
+  #navbar .is-active .first {
+    top: 12px;
+    transform: rotate(45deg);
+  }
+
+  #navbar .is-active .second {
+    opacity: 0;
+    transform: translateX(5px);
+  }
+
+  #navbar .is-active .third {
+    bottom: 12px;
+    transform: rotate(-45deg);
+  }
+
+  html[light-mode="light"] #navbar .first,
+  html[light-mode="light"] #navbar .second,
+  html[light-mode="light"] #navbar .third {
+    background-color: #40374f;
+  }
+
   #navbarSupportedContent.show,
   #navbarSupportedContent.collapsing {
     position: fixed;

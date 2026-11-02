@@ -1557,8 +1557,9 @@ a:hover {
 .home-social-links {
   display: flex;
   flex-wrap: wrap;
+  align-items: center;
   justify-content: center;
-  gap: 12px 22px;
+  gap: 12px;
   margin: -40px 0 0;
   padding: 20px 0 30px;
   border-top: 1px solid var(--home-line);
@@ -1567,17 +1568,39 @@ a:hover {
 }
 
 .home-social-links span {
+  margin-right: 8px;
   color: var(--home-muted);
 }
 
 .home-social-links a {
+  display: inline-grid;
+  width: 42px;
+  height: 42px;
+  place-items: center;
+  border: 1px solid var(--home-line);
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.055);
   color: var(--home-ink) !important;
+  font-size: 1rem;
   text-decoration: none;
-  transition: color 160ms ease;
+  transition: color 160ms ease, background-color 160ms ease, border-color 160ms ease, transform 160ms ease;
 }
 
-.home-social-links a:hover {
+.home-social-links a:hover,
+.home-social-links a:focus-visible {
+  transform: translateY(-2px);
+  border-color: rgba(165, 126, 223, 0.52);
+  background: rgba(142, 101, 207, 0.16);
   color: var(--home-accent) !important;
+}
+
+.home-social-links a:focus-visible {
+  outline: 2px solid var(--home-accent);
+  outline-offset: 3px;
+}
+
+html[light-mode="light"] .home-social-links a {
+  background: rgba(255, 255, 255, 0.58);
 }
 
 html[light-mode="light"] .home-content {

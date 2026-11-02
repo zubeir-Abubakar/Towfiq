@@ -1910,8 +1910,8 @@ html[light-mode="light"] #navbar .third {
   #navbar .navbar-toggler {
     display: grid;
     place-items: center;
-    width: 92px;
-    height: 92px;
+    width: 70px;
+    height: 62px;
     margin: 0 12px;
     padding: 0;
     border: 2px solid rgba(220, 214, 237, 0.3);

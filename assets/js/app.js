@@ -193,7 +193,7 @@ let footer = $(`
         </form>
       </section>
     </div>
-    <div class="contact-footer-note"><span>Thoughtful work. Built with care.</span><span class="contact-footer-rule" aria-hidden="true"></span><span>Thanks for stopping by.</span></div>
+    <div class="contact-footer-note"><span>Thoughtful work. Built with Quality & care.</span><span class="contact-footer-rule" aria-hidden="true"></span><span>Thanks for stopping by.</span></div>
   </div>
 </footer>
 `);

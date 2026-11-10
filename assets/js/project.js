@@ -1,45 +1,53 @@
 if (typeof AOS !== "undefined") {
-  AOS.init({ once: true });
+  AOS.init({ once: true, duration: 700, easing: "ease-out-cubic", offset: 90 });
 }
 
 const projectcards = document.querySelector(".projectcards");
 const careerTimeline = document.querySelector(".career-timeline");
+const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
 
 const projects = [
   {
     title: "CASHIA",
-    cardImage: "assets/images/project-page/cashia.png",
+    image: "cashia",
     description: "A fintech platform for digital financial services and payments. QA work covered web and mobile journeys, API validation, regression testing, and release confidence.",
     tags: ["Javascript", "React JS"],
     Previewlink: "https://cashia.com/",
   },
   {
     title: "Cashia Developer Docs",
-    cardImage: "assets/images/project-page/cashiaDoc.png",
+    image: "cashiadoc",
     description: "Integration documentation for Cashia's payment APIs, authentication, and hosted checkout, helping developers navigate implementation and onboarding.",
     tags: ["JAVA", "Python"],
     Previewlink: "https://developer.cashia.com/docs",
   },
   {
     title: "Duopole",
-    cardImage: "assets/images/project-page/Duopole.png",
+    image: "duopole",
     description: "A fresh-produce market development site connecting Kenyan suppliers with potential buyers in Switzerland, with an initial focus on avocados.",
-    tags: ["CSS", "HTML5"],
+    tags: ["Typescript", "React js", "HTML5"],
     Previewlink: "https://duopole.vercel.app/",
   },
   {
     title: "Malley Prairie",
-    cardImage: "assets/images/project-page/daycare.png",
+    image: "daycare",
     description: "An independent childcare-site concept presenting MalleyPrairie's care locations, educational approach, practical information, and enrollment process.",
-    tags: ["JavaScript", "HTML5"],
+    tags: ["JavaScript","React JS", "Tilwind"],
     Previewlink: "https://malleyprairie.vercel.app/",
   },
   {
     title: "Nobilis",
-    cardImage: "assets/images/project-page/Nobilis.png",
+    image: "nobilis",
     description: "The website of a Nairobi-based software company, presenting its web and mobile development services, case studies, and client work.",
-    tags: [],
+    tags: ["FLASK","Python", "Tilwind"],
     Previewlink: "https://nobilisltd.co.ke/",
+  },
+    {
+    title: "SPPO",
+    image: "PPO",
+    description: "SPPO connects fruits and vegetable producers around the world with wholesellers , retailers and other businesses that need fresh produce.",
+    tags: ["FLASK","Python", "Tilwind"],
+    Previewlink: "https://sppo-theta.vercel.app/de",
   },
 ];
 
@@ -74,32 +82,55 @@ const experience = [
   },
 ];
 
+const PROJECT_IMAGE_SIZES =
+  "(max-width: 767px) calc(100vw - 36px), (max-width: 991px) calc(100vw - 40px), 56vw";
+
+const projectPicture = (title, image, index) => {
+  const base = `assets/images/project-page/optimized/${image}`;
+  const loading = index === 0 ? "eager" : "lazy";
+  const srcset = (ext) => `${base}-640.${ext} 640w, ${base}-1280.${ext} 1280w`;
+
+  return `
+    <picture>
+      <source type="image/webp" srcset="${srcset("webp")}" sizes="${PROJECT_IMAGE_SIZES}">
+      <img src="${base}-1280.jpg" srcset="${srcset("jpg")}" sizes="${PROJECT_IMAGE_SIZES}"
+        alt="${title} website preview" width="1280" height="692" loading="${loading}" decoding="async">
+    </picture>`;
+};
+
 const renderProjects = () => {
   if (!projectcards) return;
 
+  const total = String(projects.length).padStart(2, "0");
+
   projectcards.innerHTML = projects
-    .map(({ title, cardImage, description, tags, Previewlink, Githublink }, index) => {
+    .map(({ title, image, description, tags, Previewlink }, index) => {
+      const number = String(index + 1).padStart(2, "0");
       const tagList = tags.length
-        ? `<ul class="project-tags" aria-label="Technologies">${tags.map((tag) => `<li>${tag}</li>`).join("")}</ul>`
+        ? `<ul class="pj-project-tags" aria-label="Technologies">${tags.map((tag) => `<li>${tag}</li>`).join("")}</ul>`
         : "";
-      const visitLink = Previewlink
-        ? `<a class="project-visit" href="${Previewlink}" target="_blank" rel="noopener noreferrer">Visit Page <i class="fas fa-arrow-up-right-from-square" aria-hidden="true"></i></a>`
-        : `<span class="project-unavailable" aria-disabled="true">Visit Page unavailable</span>`;
-      const sourceLink = Githublink
-        ? `<a class="project-source" href="${Githublink}" target="_blank" rel="noopener noreferrer">Source code</a>`
+      const picture = projectPicture(title, image, index);
+
+      const visual = Previewlink
+        ? `<a class="pj-project-visual" href="${Previewlink}" target="_blank" rel="noopener noreferrer" aria-label="Open ${title} in a new tab">${picture}<span class="pj-project-visual-glow" aria-hidden="true"></span></a>`
+        : `<div class="pj-project-visual">${picture}</div>`;
+
+      const action = Previewlink
+        ? `<a class="pj-project-link pj-btn pj-btn-primary" href="${Previewlink}" target="_blank" rel="noopener noreferrer">
+             View Project
+             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 17 17 7"/><path d="M8 7h9v9"/></svg>
+           </a>`
         : "";
-      const preview = Previewlink
-        ? `<a href="${Previewlink}" target="_blank" rel="noopener noreferrer" aria-label="Open ${title}"><img src="${cardImage}" alt="${title} website preview" loading="lazy"></a>`
-        : `<img src="${cardImage}" alt="${title} preview" loading="lazy">`;
 
       return `
-        <article class="project-row" data-aos="fade-up" data-aos-delay="${index * 80}">
-          <div class="project-preview">${preview}</div>
-          <div class="project-details">
-            ${tagList}
-            <h2>${title}</h2>
+        <article class="pj-project" data-aos="fade-up" data-aos-delay="${(index % 2) * 80}">
+          <div class="pj-project-visual-wrap">${visual}</div>
+          <div class="pj-project-body">
+            <p class="pj-project-index">${number}<span>/ ${total}</span></p>
+            <h3>${title}</h3>
             <p>${description}</p>
-            <div class="project-actions">${visitLink}${sourceLink}</div>
+            ${tagList}
+            ${action}
           </div>
         </article>`;
     })
@@ -128,7 +159,81 @@ const renderExperience = () => {
     .join("");
 };
 
+/* Smooth in-page navigation for the hero CTAs */
+const scrollToTarget = (hash) => {
+  const target = document.querySelector(hash);
+  if (!target) return false;
+  if (!target.hasAttribute("tabindex")) target.setAttribute("tabindex", "-1");
+  target.scrollIntoView({
+    behavior: prefersReducedMotion.matches ? "auto" : "smooth",
+    block: "start",
+  });
+  target.focus({ preventScroll: true });
+  return true;
+};
+
+document.addEventListener("click", (event) => {
+  const link = event.target.closest("a[data-scroll]");
+  if (!link) return;
+
+  const hash = link.getAttribute("href") || "";
+  if (!hash.startsWith("#") || !scrollToTarget(hash)) return;
+
+  event.preventDefault();
+  if (window.history.replaceState) {
+    window.history.replaceState(null, "", hash);
+  }
+});
+
+/* Floating WhatsApp shortcut: shows with the contact section and steps aside
+   whenever it would sit on top of the contact form or another control. */
+const initContactShortcut = () => {
+  const contact = document.getElementById("contact");
+  const shortcut = document.querySelector(".pj-whatsapp-float");
+  if (!contact || !shortcut) return;
+
+  const form = document.querySelector(".contact-form-card");
+  let queued = false;
+
+  const update = () => {
+    queued = false;
+    const contactBox = contact.getBoundingClientRect();
+    const inContact = contactBox.top < window.innerHeight - 90 && contactBox.bottom > 90;
+
+    let collides = false;
+    if (form) {
+      const f = form.getBoundingClientRect();
+      const s = shortcut.getBoundingClientRect();
+      const gap = 10;
+      collides = !(
+        s.right + gap < f.left ||
+        s.left - gap > f.right ||
+        s.bottom + gap < f.top ||
+        s.top - gap > f.bottom
+      );
+    }
+
+    shortcut.classList.toggle("is-visible", inContact && !collides);
+  };
+
+  const requestUpdate = () => {
+    if (queued) return;
+    queued = true;
+    window.requestAnimationFrame(update);
+  };
+
+  window.addEventListener("scroll", requestUpdate, { passive: true });
+  window.addEventListener("resize", requestUpdate);
+  update();
+};
+
 document.addEventListener("DOMContentLoaded", () => {
   renderProjects();
   renderExperience();
 });
+
+if (document.readyState === "complete") {
+  initContactShortcut();
+} else {
+  window.addEventListener("load", initContactShortcut);
+}

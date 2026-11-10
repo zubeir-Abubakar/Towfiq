@@ -13,6 +13,32 @@ script.type = 'text/javascript';
 script.src="https://unpkg.com/sweetalert/dist/sweetalert.min.js";
 document.body.appendChild(script);
 
+// Reusable AT monogram (white + electric-blue geometric ligature)
+const atMonogram = (suffix = "nav") => `
+<svg class="at-monogram" viewBox="0 0 44 44" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+  <defs>
+    <linearGradient id="at-bg-${suffix}" x1="6" y1="2" x2="38" y2="42" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#0b1730"/><stop offset="1" stop-color="#09111f"/>
+    </linearGradient>
+    <linearGradient id="at-line-${suffix}" x1="9" y1="5" x2="37" y2="40" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#7cd6ff"/><stop offset="0.5" stop-color="#2f7bff"/><stop offset="1" stop-color="#4aa8ff"/>
+    </linearGradient>
+  </defs>
+  <rect x="1.1" y="1.1" width="41.8" height="41.8" rx="13" fill="url(#at-bg-${suffix})"/>
+  <rect x="1.1" y="1.1" width="41.8" height="41.8" rx="13" fill="none" stroke="url(#at-line-${suffix})" stroke-width="1.4" opacity="0.85"/>
+  <path d="M11.4 31.6 21.6 13.6 31.8 31.6" fill="none" stroke="#ffffff" stroke-width="3.1" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M16.4 25.3h10.4" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round"/>
+  <path d="M10.6 12.4h22" stroke="url(#at-line-${suffix})" stroke-width="3" stroke-linecap="round"/>
+  <path d="M21.6 13.6v17.8" stroke="url(#at-line-${suffix})" stroke-width="2.8" stroke-linecap="round"/>
+</svg>`;
+
+const WHATSAPP_URL =
+  "https://wa.me/41793680570?text=" +
+  encodeURIComponent("Hello Abubakar, I'm interested in discussing a website project.");
+
+const whatsappIcon = `
+<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>`;
+
 const portfolioScrollLocks = new Set();
 let lockedScrollY = 0;
 let savedBodyStyles = "";
@@ -51,14 +77,17 @@ window.setPortfolioScrollLock = (owner, locked) => {
 
 let header = $(`
 <nav class="navbar navbar-expand-lg fixed-top dark-theme" id="navbar">
-<a class="navbar-brand" href="index.html">Abubakar </a>
+<a class="navbar-brand brand-lockup" href="index.html" aria-label="Abubakar Towfiq — home">
+<span class="brand-mark" aria-hidden="true">${atMonogram("nav")}</span>
+<span class="brand-name">Abubakar Towfiq</span>
+</a>
 <button class="hamburger_wrapper navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 
-  <span id="js-hamburger" class="hamburger" aria-hidden="true">
-    <span class="first"></span>
-    <span class="second"></span>
-    <span class="third"></span>
-  </span>
+  <svg id="js-hamburger" class="ham hamRotate ham8" viewBox="0 0 100 100" width="40" aria-hidden="true" focusable="false">
+    <path class="line top" d="m 30,33 h 40 c 3.722839,0 7.5,3.126468 7.5,8.578427 0,5.451959 -2.727029,8.421573 -7.5,8.421573 h -20" />
+    <path class="line middle" d="m 30,50 h 40" />
+    <path class="line bottom" d="m 70,67 h -40 c 0,0 -7.5,-0.802118 -7.5,-8.365747 0,-7.563629 7.5,-8.634253 7.5,-8.634253 h 20" />
+  </svg>
 </button>
 
 <div class="collapse navbar-collapse " id="navbarSupportedContent">
@@ -161,7 +190,7 @@ let footer = $(`
         <div class="contact-art" aria-hidden="true">
           <div class="contact-art-orbit contact-art-orbit-one"></div>
           <div class="contact-art-orbit contact-art-orbit-two"></div>
-          <div class="contact-art-mark">AT</div>
+          <div class="contact-art-mark">${atMonogram("contact")}</div>
           <div class="contact-art-caption"><span>GOOD WORK STARTS HERE</span><strong>A conversation.</strong></div>
           <span class="contact-art-index">01 <i>/</i> 01</span>
         </div>
@@ -191,7 +220,20 @@ let footer = $(`
             <i class="fas fa-arrow-right" aria-hidden="true"></i>
           </button>
         </form>
+        <div class="contact-alt-divider" aria-hidden="true"><span>or</span></div>
+        <a class="contact-whatsapp" href="${WHATSAPP_URL}" target="_blank" rel="noopener noreferrer">
+          <span class="contact-whatsapp-icon" aria-hidden="true">${whatsappIcon}</span>
+          <span class="contact-whatsapp-copy">
+            <strong>Chat with me on WhatsApp</strong>
+            <small>Let's Catch Up On WhatsApp</small>
+          </span>
+          <svg class="contact-whatsapp-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 17 17 7"/><path d="M8 7h9v9"/></svg>
+        </a>
       </section>
+    </div>
+    <div class="contact-footer-brand">
+      <span class="brand-mark" aria-hidden="true">${atMonogram("footer")}</span>
+      <span>Abubakar Towfiq</span>
     </div>
     <div class="contact-footer-note"><span>Thoughtful work. Built with Quality & care.</span><span class="contact-footer-rule" aria-hidden="true"></span><span>Thanks for stopping by.</span></div>
   </div>
@@ -201,8 +243,6 @@ let footer = $(`
 //"Scroll to top" button
 let upArrow = $(`
   <button id="btnScrollToTop" onclick="scrollToTop()"><i class="fas fa-2x fa-angle-up"></i></button>
-  <link rel="stylesheet" type="text/css" href="./css/style.css" />
-  })
 `);
 
 $(document).ready(function () {
@@ -262,11 +302,11 @@ $(function () {
   });
   $(menu).on("shown.bs.collapse", () => {
     menuButton.classList.add("open");
-    hamburger.classList.add("is-active");
+    hamburger.classList.add("active");
   });
   $(menu).on("hidden.bs.collapse", () => {
     menuButton.classList.remove("open");
-    hamburger.classList.remove("is-active");
+    hamburger.classList.remove("active");
     window.setPortfolioScrollLock("navigation", false);
   });
 
@@ -301,7 +341,7 @@ $(function () {
     if (!isMobileMenu()) {
       window.setPortfolioScrollLock("navigation", false);
       menuButton.classList.remove("open");
-      hamburger.classList.remove("is-active");
+      hamburger.classList.remove("active");
     }
   });
 });
